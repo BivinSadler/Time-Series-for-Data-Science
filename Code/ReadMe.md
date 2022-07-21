@@ -1115,14 +1115,15 @@ plotts.sample.wge(logAP)
 
 
 ### Page 312-313
-
+```r
 est.ar.wge(xA12,p= 16,type= 'burg')
 
 sA12= artrans.wge(xA12,phi.tr= c(rep(0,11),1))
-
+```
 
 
 ### Page 314  Note:  The last two lines are correct here but incorrect in the text.  
+```r
 Specifically, in each line there should be comma  before arlimits and the addition of ,trunc=30
 
 xA12= gen.arima.wge(n= 72,s= 12,mu= 50,sn= 100)
@@ -1133,29 +1134,29 @@ plotts.sample.wge(sA12 ,arlimits=TRUE,speclimits=c(-20,10),trunc=30)
 
 xB= gen.arima.wge(n= 100,phi= c(1.3,- .65),s= 4,sn= 290)
 est.ar.wge(xB, p= 10,type= 'burg')
-
+```
 
 ### Page 315
-
+```r
 sB4= artrans.wge(xB,phi.tr= c(0,0,0,1))
 aic.wge(sB4,p= 0:10,q= 0:2)
 est.ar.wge(sB4,p= 2)
-
+```
 
 
 ### Page 316
-
+```r
 data(AirPassengers)
 logAP= log(AirPassengers)
 plotts.sample.wge(logAP)
 
 est.ar.wge(logAP,p= 15,type= 'burg')
-
+```
 
 
 
 ### Page 317   Note:  The should be a comma before speclimits in each of the last 2 lines
-
+```r
 s12= artrans.wge(logAP,phi.tr= c(rep(0,11),1))
 s12d1= artrans.wge(s12,phi.tr= 1)
 
@@ -1170,11 +1171,11 @@ s12d1= artrans.wge(s12,phi.tr= 1,plot= FALSE)
 plotts.sample.wge(logAP)
 plotts.sample.wge(s12d1,arlimits= TRUE, speclimits=c(-20,10))
 plotts.sample.wge(s12,arlimits= TRUE, speclimits=c(-20,10))
-
+```
 
 
 ### Page 319
-
+```r
 s12= artrans.wge(airlog,phi.tr= c(rep(0,11),1))
 aic5.wge(s12,p= 0:15,q= 0:0)
 # AIC selects an AR(13)
@@ -1183,20 +1184,20 @@ est.ar.wge(s12,p= 13)
 data(dfw.mon)
 DFW.2000= window(dfw.mon,start= c(2000,1))
 plotts.sample.wge(DFW.2000)
-
+```
 
 
 ### Page 320-321
-
+```r
 DFW.tr12= artrans.wge(DFW.2000,phi.tr= c(1.732,- 1),plot= FALSE)
 plotts.sample.wge(DFW.tr12)
 
 aic5.wge(DFW.tr12,p= 0:15,q= 0:2)
-
+```
 
 
 ### Page 322
-
+```r
 xA12= gen.arima.wge(n= 72,s= 12,mu= 50,sn= 100)
 par(mfrow= c(1,2))
 fore.arima.wge(xA4[1:24],s= 4,n.ahead= 12,limits= FALSE)
@@ -1204,11 +1205,11 @@ abline(v= 24.5,lwd= 2)
 
 fore.arima.wge(xA12[1:24],s= 12,n.ahead= 12,limits= FALSE)
 abline(v= 24.5,lwd= 2)
-
+```
 
 
 ### Page 323
-
+```r
 xB= gen.arima.wge(n= 100,phi= c(1.3,- .65),s= 4,sn= 290)
 fore.xB= fore.arima.wge(xB,phi= c(1.19,- .64),s= 4,n.ahead= 12)
 
@@ -1220,9 +1221,10 @@ fore.xB= fore.arima.wge(xB[89:100],phi= c(1.19,- .64),s= 4,n.ahead= 12)
 fore.xB= fore.arima.wge(xB[89:100],phi= c(1.19,- .64),s= 4,n.ahead= 12,limits=
 FALSE)
 points(t[13:24],xB[101:112],type= 'o')
+```
 
 ### Page 325
-
+```r
 data(AirPassengers)
 logAP= log(AirPassengers)
 s12= artrans.wge(logAP,phi.tr= c(rep(0,11),1),plot= FALSE)
@@ -1235,22 +1237,22 @@ aic5.wge(s12,p= 0:15,q= 0:0)
 estALT = est.ar.wge(s12,p= 13)
 roll.win.rmse.wge(airlog, s = 12, d = 0, phi = estALT$phi,
 horizon = 12)
-
+```
 
 
 
 ### Page 326
-
+```r
 DFW.tr2= artrans.wge(DFW.2000,phi.tr= c(1.732,- 1),plot= FALSE)
 est.tr2= est.arma.wge(DFW.tr2,p= 11,q= 1)
 
 seas.12= c(1.732,- 1)
 DFW.13= mult.wge(fac1= est.tr2$phi,fac2= seas.12)
-
+```
 
 
 ### Page 327
-
+```r
 DFW.full= DFW.13$model.coef
 f12= fore.arma.wge(DFW.2000,phi= DFW.13$model.coef,theta= est.tr2$theta,
 lastn= TRUE,n.ahead= 12,limits= FALSE)
@@ -1263,65 +1265,64 @@ lastn= TRUE,n.ahead= 84,limits= FALSE)
 
 f132= fore.arma.wge(DFW.2000,phi= DFW.13$model.coef,theta= est.tr2$theta,
 lastn= TRUE,n.ahead= 132,limits= FALSE)
-
+```
 
 
 
 ### Page 330
-
+```r
 set.seed(11)
 par(mfrow= c(4,1), mar=c(2,1,1,1))
 u1= gen.arch.wge(500,alpha0= 1,alpha= 0)
 u2= gen.arch.wge(500,alpha0= .6,alpha= .4)
 u3= gen.arch.wge(500,alpha0= .3,alpha= .7)
 u4= gen.arch.wge(500,alpha0= .1,alpha= .9)
-
+```
 
 
 ### Page 334
-
+```r
 u1= gen.arch.wge(1000,alpha0= .1,alpha= c(.5,.4),sn= 17)
 u2= gen.arch.wge(1000,alpha0= .1,alpha= c(.4,.3,.2),sn= 32)
 u3= gen.garch.wge(1000,alpha0= .1,alpha= .4,beta= .5,sn= 141)
-
-
+```
 
 
 ### Page 335
-
+```r
 u1.out= garch(u1,order= c(0,2))
 summary(u1.out)
-
+```
 
 
 
 ### Page 336   Note:  the last line should read summary(u2.out) instead of u2.out in the text
-
+```r
 u2.out= garch(u2,order= c(0,3)) # recall, order=c(q,p)
 summary(u2.out)
-
+```
 
 
 ### Page 336   
-
+```r
 data(rate)
 rate.2000= rate[7200:8199]
 rate.2000.out= garch(rate.2000,order= c(1,2) # recall, order=c(q,p))
 summary(rate.2000.out)
-
+```
 
 
 ### Page 336   Note: Can’t find data set rate 
-
+```r
 data(rate)
 rate.2000= rate[7200:8199]
 rate.2000.out= garch(rate.2000,order= c(1,2) # recall, order=c(q,p))
 summary(rate.2000.out)
-
+```
 
 
 ### Page 345
-
+```r
 z= gen.arma.wge(n= 100,phi= .95,sn= 447,plot= FALSE)
 t= 1:100
 line= 10+ .08*t
@@ -1337,11 +1338,11 @@ points(fit,type= 'l')
 resid= x- fit
 plot(resid,type= 'l')
 abline(h= 0)
-
+```
 
 
 ### Page 346
-
+```r
 z1= gen.arma.wge(n= 100,phi= .90,sn=65987)
 time= 1:100
 x1= 10+ .1*time+ z1
@@ -1352,45 +1353,47 @@ x1= gen.sigplusnoise.wge(n= 100,b0= 10,b1= .1,phi= .9,sn= 65987)
 z2= gen.arma.wge(n= 100,phi= .95,sn= 6587)
 time= 1:100
 x2= 10+ z2
-
+```
 
 ### Page 347
-
+```r
 slr.wge(x1)
 slr.wge(x2)
-
+```
 
 
 ### Page 352
-
+```r
 co.wge(x1)
 co.wge(x2)
-
+```
 
 
 ### Page 353
-
+```r
 wbg.boot.wge(x1)
 wbg.boot.wge(x2)
-
+```
 
 
 ### Page 354
-
+```r
 wbg.boot.wge(x1,sn= 234)
 wbg.boot.wge(x2,sn= 183)
-
+```
 
 
 ### Page 355
-
+```r
 xa= slr.wge(x1)
 
 xa$res
 
 xa.aic= aic.burg.wge(xa$res,p= 1:5)
-### Page 356
+```
 
+### Page 356
+```r
 x1= gen.sigplusnoise.wge(n= 100,b0= 10,b1= .1,phi= .9,sn= 65987)
 
 wbg.boot.wge(x1)
@@ -1398,12 +1401,12 @@ wbg.boot.wge(x1)
 xa= slr.wge(x1)
 
 xa.aic= aic.wge(xa$res,p= 0:5,q= 0:0)
-
+```
 
 
 
 ### Page 357-358
-
+```r
 fit.sig= fore.sigplusnoise.wge(x1,linear= TRUE)
 
 z2= gen.arma.wge(n= 100,phi= .95,sn= 6587)
@@ -1412,11 +1415,11 @@ x2= 10+ z2
 wbg.boot.wge(x2)
 
 aic.wge(x2,p= 0:8,q= 0:2)
-
+```
 
 
 ### Page 359    Note:  Figure 8.4(a) is incorrect.  
-
+```r
 xa= slr.wge(x1)
 
 xa.aic= aic.ar.wge(xa$res,p= 0:5)
@@ -1427,21 +1430,21 @@ tf= 101:125
 f.x1= f.z1$f+ xa$b0hat+ xa$b1hat*tf
 
 fore.sigplusnoise.wge(x1,n.ahead= 25,limits= TRUE)
-
+```
 
 
 ### Page 360
-
+```r
 z= gen.arma.wge(n= 100,phi= .75,sn= 921,vara= 1.5)
 time= 1:100
 sig.cos= 5*cos(2*pi*.1*time+ pi/ 3)
 x.cos= sig.cos+ z
 plotts.wge(x.cos)
-
+```
 
 
 ### Page 363-364
-
+```r
 n= length(x.cos)
 h1= rep(0,n)
 h2= rep(0,n)
@@ -1464,22 +1467,22 @@ for(t in 1:n) z.cos[t] = x.cos[t]- C0- A*h1[t]- B*h2[t]
 z.cos.aic= aic.wge(z.cos,p= 1:5)
 
 ar.cos= est.ar.wge(z.cos,p= z.cos.aic$p)
-
+```
 
 
 
 ### Page 365
-
+```r
 f.ar.cos= fore.arma.wge(ar.cos$res,ar.cos$phi,n.ahead= 50)
 
 f.x.cos= rep(0,length(x.cos))
 for (t in 1:length(x.cos))
 f.x.cos[t] = f.ar.cos$f[t]+ C0+ A*h1[t]+ B*h2[t]
-
+```
 
 
 ### Page 366
-
+```r
 fore.sigplusnoise.wge(x.cos,linear= FALSE,freq= .1,n.ahead= 50,limits= TRUE)
 
 fore.sigplusnoise.wge(x.cos,linear= FALSE,freq= .1,lastn= TRUE,n.ahead=
@@ -1490,11 +1493,11 @@ fore.sigplusnoise.wge(x.cos,linear= FALSE,freq= .1,lastn= TRUE,n.ahead=
 67,limits= FALSE)
 fore.sigplusnoise.wge(x.cos,linear= FALSE,freq= .1,lastn= TRUE,n.ahead=
 84,limits= FALSE)
-
+```
 
 
 ### Page 368   Note:  The # signs need to be added to the last three lines as shown below
-
+```r
 x.ar2= gen.arma.wge(n= 100,phi= c(1.55,- .925),vara= .8,sn= 281)
 
 x.ar2.h= fore.sigplusnoise.wge(x.ar2,linear= FALSE, f= .1)
@@ -1502,10 +1505,10 @@ x.ar2.h= fore.sigplusnoise.wge(x.ar2,linear= FALSE, f= .1)
 x.ar2.h$b[1]  # 0.0042891 (C0)
 x.ar2.h$b[2]  # - 0.4445196 (A)
 x.ar2.h$b[3]  # - 3.4193501 (B)
-
+```
 
 ### Page 369   
-
+```r
 fore.sigplusnoise.wge(x.ar2,linear= FALSE,freq= .1,lastn= TRUE,n.ahead=
 10,limits= FALSE)
 fore.sigplusnoise.wge(x.ar2,linear= FALSE,freq= .1,lastn= TRUE,n.ahead=
@@ -1514,18 +1517,18 @@ fore.sigplusnoise.wge(x.ar2,linear= FALSE,freq= .1,lastn= TRUE,n.ahead=
 67,limits= FALSE)
 fore.sigplusnoise.wge(x.ar2,linear= FALSE,freq= .1,lastn= TRUE,n.ahead=
 84,limits= FALSE)
-
+```
 
 ### Page 371   
-
+```r
 dfw.2000= window(dfw.mon,start= c(2000,1))
 
 fore.sigplusnoise.wge(dfw.2000,linear= FALSE,f= .0833)
-
+```
 
 
 ### Page 385   
-
+```r
 modelB= gen.arma.wge(n= 150,phi= c(2.6,- 3.34,2.46,- .9024),sn= 3233)
 plotts.sample.wge(modelB)
 aic.B= aic.wge(modelB,p= 0:10,q= 0:4)# AIC selects p= 4,q= 0
@@ -1535,23 +1538,23 @@ plotts.sample.wge(fit40$res,lag.max= 48,arlimits= TRUE)
 
 ljung.wge(fit40$res,p= 4,q= 0) # K= 24 is the default
 ljung.wge(fit40$res,p= 4,q= 0,K= 48)
-
+```
 
 
 ### Page 386   
-
+```r
 d1= artrans.wge(airlog,phi.tr= 1) # d1 is the differenced data
 d1.s12= artrans.wge(d1,phi.tr= c(rep(0,11),1)) #seasonally difference d1
 air.est= est.ar.wge(d1.s12,p= 13,type= 'burg')
 plotts.sample.wge(air.est$res,lag.max= 48,arlimits= TRUE)
 ljung.wge(air.est$res,p= 13)
 ljung.wge(air.est$res,p= 13,K= 48)
-
+```
 
 
 
 ### Page 387   
-
+```r
 data(dfw.mon)
 dfw.2000= window(dfw.mon,start= c(2000,1))
 tr2.temp= artrans.wge(dfw.2000,phi.tr= c(1.732,- 1))
@@ -1559,37 +1562,37 @@ tr2.est= est.arma.wge(tr2.temp,p= 11,q= 1)
 plotts.sample.wge(tr2.est$res,lag.max= 48,arlimits= TRUE)
 ljung.wge(tr2.est$res,p= 11,q= 1)
 ljung.wge(tr2.est$res,p= 11,q= 1,K= 48)
-
+```
 
 
 
 ### Page 388   Note:  Should be using sunspot2.0 instead of sunspot.new 
-
+```r
 data(sunspot2.0)
 ss2= est.ar.wge(sunspot2.0,p= 2)
 ljung.wge(ss2$res,p= 2)
 ljung.wge(ss2$res,p= 2,K= 48)
-
+```
 
 
 ### Page 389   Note:  The ljung.wge  p-values are 0.0678 and 0.0547
-
+```r
 data(sunspot2.0)
 ss9= est.ar.wge(sunspot2.0,p= 9)
 ljung.wge(ss9$res,p= 9)
 ljung.wge(ss9$res,p= 9,K= 48)
-
+```
 
 
 
 ### Page 390     Note:  p-value is .1809
-
+```r
 shapiro.test(fit40$res)
-
+```
 
 
 ### Page 392  
-   
+```r
 data(global2020)
 aic.wge(global2020,p= 0:10,q= 0:4) #AIC selects p= 4,q= 1
 aic.wge(global2020,p= 0:10,q= 0:4,type= 'bic') #BIC selects p= 3,q= 0
@@ -1599,18 +1602,18 @@ plotts.sample.wge(global41.est$res,lag.max= 48,arlimits= TRUE)
 ljung.wge(global41.est$res,p= 4,q= 1)
 ljung.wge(global41.est$res,p= 4,q= 1,K= 48)
 shapiro.test(global41.est$res)
-
+```
 
 
 ### Page 394  
-
+```r
 fore.41= fore.arma.wge(global2020,phi=c(.9,-.102,.077,.116),theta=.406,
 n.ahead= 50,limits= FALSE)
-
+```
 
 
 ### Page 396  
-
+```r
 data(global2020)
 y= artrans.wge(global2020,phi.tr= 1)
 aic.wge(y,p= 0:10,q= 0:4,type= 'bic')
@@ -1622,65 +1625,65 @@ plotts.sample.wge(y.est$res,arlimits= TRUE)
 ljung.wge(y.est$res,p= 0,q= 1)
 ljung.wge(y.est$res,p= 0,q= 1,K= 48)
 shapiro.test(y.est$res)
-
+```
 
 
 
 ### Page 400   Note:  in the next to last line of code, wbg.boot.wge should replace wbg.wge
-
+```r
 reg= slr.wge(global2020)
 t= 1:length(global2020)
 # residuals from the linear regression line
 zhat= global2020- reg$b0hat- reg$b1hat*t
-
+```
 
 
 
 ### Page 401
-
+```r
 aic.wge(zhat,p= 0:10,q= 0:0)
 
 global.co= co.wge(global2020,maxp= 10)
 global.wbg= wbg.boot.wge(global2020)
 
 zhat= est.ar.wge(zhat,p= 4)
-
+```
 
 
 
 ### Page 402
-
+```r
 plotts.sample.wge(zhat$res,lag.max= 48,arlimits= TRUE)
 ljung.wge(zhat$res,p= 4)
 ljung.wge(zhat$res,p= 4,K= 48)
 shapiro.test(zhat$res)
-
+```
 
 
 ### Page 406
-
+```r
 data(global2020)
 x.hw= HoltWinters(global2020,gamma= FALSE)
 x.pred= predict(x.hw,n.ahead= 50)
 plot(x.hw,x.pred,lty= 1:2)
-
+```
 
 ### Page 407
-
+```r
 logss= log(sunspot2.0+ 10)
-
+```
 
 
 ### Page 408
-
+```r
 aic.wge(logss,p= 0:12,q= 0:4)
 
 pacf.wge(logss)
-
+```
 
 
 ### Page 409
-
+```r
 data(sunspot2.0)
 logss= log(sunspot2.0+ 10)
 ss2= est.ar.wge(logss,p= 2)
@@ -1691,12 +1694,12 @@ ljung.wge(ss2$res,p= 2,K= 48)
 
 ljung.wge(ss9$res,p= 9)
 ljung.wge(ss9$res,p= 9,K= 48)
-
+```
 
 
 
 ### Page 419  
-
+```r
 par(mfrow= c(2,2))
 data(Bsales)
 sales= Bsales$sales
@@ -1707,10 +1710,10 @@ plotts.wge(sales,xlab= "Week",ylab= "Dollars (in thousands)")
 plotts.wge(ad_tv,xlab= "Week",ylab= " Dollars (in thousands)")
 plotts.wge(ad_online,xlab= "Week",ylab= " Dollars (in thousands)")
 plotts.wge(discount,xlab= "Week",ylab= " Dollars (in thousands)")
-
+```
 
 ### Page 420  
-
+```r
 data(Bsales)
 sales=Bsales$sales
 ad_tv=Bsales$ad_tv
@@ -1724,22 +1727,22 @@ aic.wge(mlrfit$residuals, p= 0:8, q= 0)
 # The following computes the ML estimates
 fit = arima(sales,order= c(7,0,0),xreg= cbind(ad_tv,ad_online,discount))
 fit
-
+```
 
 
 ### Page 422  
-  
+```r
 t = 1:100
 mlrfit = lm(sales~ t+ ad_tv+ ad_online+ discount,data=Bsales)
 aic.wge(mlrfit$residuals, p= 0:8, q= 0)
 #AIC selects p= 6 when fitting the residuals remaining after the MLR fit
 fit= arima(Bsales$sales, order= c(6,0,0),xreg= cbind(t,ad_tv,ad_online,discount))
 fit
-
+```
 
 
 ### Page 423  Note:  there should only be one closing parenthesis (instead of 2) toward the end of line 6 
-
+```r
 plotts.sample.wge(fit$resid,arlimits= TRUE)
 ljung.wge(fit$resid,p= 6)
 ljung.wge(fit$resid,K= 48,p= 6)
@@ -1753,18 +1756,18 @@ mlrfit= lm(sales~ad_tv1+ ad_online1+ discount,data=Bsales)#least sqr regression
 aic.wge(mlrfit$residuals,p= 0:8,q= 0) #AIC selects p= 7 fit to residuals
 fit= arima(Bsales$sales,order= c(7,0,0), xreg= cbind(ad_tv1,ad_online1,discount))
 fit
-
+```
 
 ### Page 424  
-
+```r
 plotts.sample.wge(fit$resid[2:100],lag.max= 50,arlimits= TRUE)
 ljung.wge(fit$resid[2:100],p= 7)
 ljung.wge(fit$resid[2:100],p= 7,K= 48)
-
+```
 
 
 ### Page 425  
-
+```r
 t= 1:100 #Adding 100 trend weeks. Remaining code is similar to previous example.
 ad_tv1= dplyr::lag(ad_tv,1)
 ad_online1= dplyr::lag(ad_online,1)
@@ -1776,17 +1779,17 @@ fit
 plotts.sample.wge(fit$resid[2:100],lag.max= 50,arlimits= TRUE)
 ljung.wge(fit$resid[2:100],p= 7)
 ljung.wge(fit$resid[2:100],p= 7,K= 48)
-
+```
 
 ### Page 427  
-
+```r
 ccf(ad_tv,sales) #Figure 10.6(a)7
 ccf(ad_online,sales) #Figure 10.6(b)
 ccf(discount,sales) #Figure 10.6(c)
-
+```
 
 ### Page 430  
-
+```r
 x1.25= c( - 1.03, 0.11, - 0.18, 0.20, - 0.99, - 1.63, 1.07, 2.26, - 0.49, - 1.54, 0.45,
 0.92, - 0.05, - 1.18, 0.90, 1.17, 0.31, 1.19, 0.27, - 0.09, 0.23, - 1.91, 0.46,
 3.61, - 0.03)
@@ -1795,12 +1798,12 @@ x2.25= c( - 0.82, 0.54, 1.13, - 0.24, - 0.77, 0.22, 0.46, - 0.03, - 0.59, 0.45, 
 0.71, 0.90)
 
 ccf(x1.25,x2.25) ## cross- correlation shows the significant lag at 5 ##
-
+```
 
 
 
 ### Page 431  
-
+```r
 x1= x1.25[1:20]
 x2= x2.25[1:20]
 
@@ -1812,11 +1815,11 @@ p2= aic.wge(x2,p= 0:8,q= 0:0) # aic picks p= 2
 x2.est= est.ar.wge(x1,p= p2$p)
 fore.arma.wge(x2.25,phi= x2.est$phi,n.ahead= 5,lastn= TRUE,limits= FALSE)
 #
-
+```
 
 
 ### Page 432    Results don’t match output in book
-
+```r
 # You will need to install and load the vars package from CRAN
 library(vars)
 X= cbind(x1,x2)
@@ -1825,10 +1828,10 @@ VARselect(X,lag.max= 6,type= "const",season= NULL,exogen= NULL)
 
 lsfit= VAR(X,p= 5,type= "const")
 summary(lsfit) ##Note significance of 1 variable, at lag 5 ##
-
+```
 
 ### Page 433    Note:  The last line of code has been changed from the version in the text
-
+```r
 # VAR forecasting
 preds= predict(lsfit,n.ahead= 5)
 
@@ -1841,7 +1844,7 @@ points(t[20:25],c(x1[20],f1.12),type= 'o',cex= 2,pch= 1)
 # Plotting Forecasts of x2.25
 plot(t,x2.25,type= "o",pch= 20,cex= 1,ylim= c(-2,3.75))
 points(t[20:25],c(x2[20],f2.12),type= 'o',cex= 2,pch= 1)
-
+```
 
 
 ### Page 434    
