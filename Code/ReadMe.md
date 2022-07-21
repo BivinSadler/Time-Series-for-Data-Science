@@ -1,6 +1,8 @@
-# R Code By Chapter and Page Number:  
+<img src="https://github.com/nickpoison/astsa/blob/master/fun_with_astsa/figs/tsa4.jpg" alt="tsa4"  height="200" >  
 
-Computer Code 
+# R Code Page Number for Time Series for Data Science:  
+
+
 ### Pages 12-13  
 ```r
 data(dfw.2011)  
