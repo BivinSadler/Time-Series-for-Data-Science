@@ -40,7 +40,7 @@ data(AirPassengers)
 window(AirPassengers,start = c(1950,1),end = c(1950,12))  
 data(lynx)  
 log.lynx= log(lynx)  
-# Note that log.lynx retains the ts file information contained in file lynx  
+\# Note that log.lynx retains the ts file information contained in file lynx  
 plotts.wge(log.lynx)  
 
 
@@ -58,9 +58,9 @@ plot(ozona.ts,type= 'o',xlab= 'Day')
 
 ### Page 29-30  
 data(bitcoin)  
-# Linear interpolation with one missing value   
+\# Linear interpolation with one missing value   
 bitcoin[162]=bitcoin[161]+(bitcoin[163]-bitcoin[161])/2  
-# Linear interpolation with two adjacent missing values  
+\# Linear interpolation with two adjacent missing values  
 bitcoin[165]=bitcoin[164]+(bitcoin[167]-bitcoin[164])/3  
 bitcoin[166]=bitcoin[164]+2*(bitcoin[167]-bitcoin[164])/3  
 
