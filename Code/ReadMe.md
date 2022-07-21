@@ -2,11 +2,12 @@
 
 Computer Code 
 ### Pages 12-13  
+```r
 data(dfw.2011)  
 dfw.2011  
 plot(dfw.2011)  
 plot(dfw.2011,type= 'l')  
-
+```
 
 ### Page 14  
 dfw.2011.ts = ts(dfw.2011,start= c(2011,1),frequency= 12)  
