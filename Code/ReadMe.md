@@ -1,13 +1,6 @@
 <img src="https://github.com/BivinSadler/Time-Series-for-Data-Science/blob/main/TS%20for%20DS.jpeg" height="300" class="center" >
 
-<div>
-
-<img width="400" src="https://github.com/BivinSadler/Time-Series-for-Data-Science/blob/main/TS%20for%20DS.jpeg" height="300" class="center">
-  
-</div>
-
 # R Code Page Number for Time Series for Data Science:  
-
 
 ### Pages 12-13  
 ```r
@@ -833,141 +826,141 @@ limits= FALSE)
 
 
 ### Page 254
-
+```r
 data(sunspot2.0)
 aic.ss= aic.wge(sunspot2.0,p= 0:10,q= 0:4)
 est.ss= est.ar.wge(sunspot2.0,p= aic.ss$p) # aic selects p= 9
 fore.ss= fore.arma.wge(sunspot2.0,phi= est.ss$phi,n.ahead= 30,limits= FALSE)
-
+```
 
 
 ### Page 257
-
+```r
 fore.21= fore.arma.wge(arma21,phi= c(1.583,- .899),theta= .929,n.ahead= 30,
 limits= TRUE,alpha= .05)
-
+```
 
 ### Page 259
-
+```r
 v= true.arma.aut.wge(phi= c(1.583,- .899),theta= .929,vara= .8426)
 
 data(sunspot2.0)
 est.ss= est.ar.wge(sunspot2.0,p= 9)
-
+```
 
 
 ### Page 260
-
+```r
 fore.ss= fore.arma.wge(sunspot2.0,phi= est.ss$phi,n.ahead= 30,limits= TRUE,
 alpha= .05)
-
+```
 
 ### Page 265
-
+```r
 data(sunspot2.0)
 est.ss= est.ar.wge(sunspot2.0,p= 2)
 fore.ss= fore.arma.wge(sunspot2.0,phi= est.ss$phi,n.ahead= 30,limits= TRUE)
-
+```
 
 ### Page 269  Note:  The parameter specifying the ϕ_j  coefficients is phi,  not phis as is in the text. 
-
+```r
 est9 = est.arma.wge(sunspot2.0, p = 9, factor = FALSE)
 roll.win.rmse.wge(sunspot2.0, phi = est9$phi, h = 10)
-
+```
 
 
 ### Page 278
-
+```r
 plotts.true.wge(phi= .99999,plot.data= FALSE)
 
 x010= gen.arima.wge(n= 100,d= 1,sn= 409)
 plotts.sample.wge(x010)
-
+```
 
 
 ### Page 279
-
+```r
 x9= gen.arma.wge(n= 10000,phi= .999,mu= 50,sn= 509)
 x1= gen.arima.wge(n= 10000,d= 1,mu= 50,sn= 340)
-
+```
 
 
 ### Page 280
-
+```r
 plotts.wge(x9[1:100])
 plotts.wge(x1[1:100])
-
+```
 
 
 ### Page 281
-
+```r
 x9.100= gen.arma.wge(n= 100,phi= .999,mu= 50,sn= 509)
 x1.100= gen.arima.wge(n= 100,d= 1,mu= 50,sn= 340)
-
+```
 
 
 ### Page 282  Note: In plotts.sample.wge on the last line there should be a comma after d1
-
+```r
 x010= gen.arima.wge(n= 100,d= 1,sn= 409)
 d1= artrans.wge(x010,phi.tr= 1)
 
 x010= gen.arima.wge(n= 100,d= 1,sn= 409,plot= FALSE)
 d1= artrans.wge(x010,phi.tr= 1)
 plotts.sample.wge(d1, arlimits=TRUE,speclimits=c(-20,10))
-
+```
 
 
 ### Page 282  
-
+```r
 ar2= gen.arma.wge(n= 200,phi= c(1.3,- .65),sn= 637,plot= FALSE)
 plotts.sample.wge(ar2)
-
+```
 
 ### Page 284  
-
+```r
 x210= gen.arima.wge(n= 200,phi= c(1.3,- .65),d= 1,sn= 4855)
 d1= artrans.wge(x210,phi.tr= 1)
 # plot the data (first row) and the differenced data (second row)
 plotts.sample.wge(x210)
 plotts.sample.wge(d1)
-
+```
 
 
 
 ### Page 285  
-
+```r
 x220= gen.arima.wge(n= 200,phi= c(1.3,- .65),d= 2,sn= 450)
 
 d1= artrans.wge(x220,phi.tr= 1)
 d2= artrans.wge(d1,phi.tr= 1)
 # or
 d2= artrans.wge(x220,phi.tr= c(2,- 1))
-
+```
 
 
 ### Page 286
-  
+```r
 x220= gen.arima.wge(n= 200,phi= c(1.3,- .65),d= 2,sn= 450)
 d1= artrans.wge(x220,phi.tr= 1,plot= FALSE)
 d2= artrans.wge(d1,phi.tr= 1,plot= FALSE)
 plotts.sample.wge(x220)
 plotts.sample.wge(d1)
 plotts.sample.wge(d2)
-
+```
 
 
 ### Page 289
-
+```r
 x010= gen.arima.wge(n= 100,d= 1,sn= 409)
 
 h.kpss= ur.kpss(x010,type= 'mu',lags= 'short')
 
 1-1.3704B+0.7264B^2    0.9433+-0.6978i      0.8523       0.1014
-
+```
 
 
 ### Page 292-294   Note:  The correct fitted ARIMA(2,1,0) model is (1-1.37B+.73B^2)(1-B)X_t=a_t,    where σ ̂_a^2=1.036.
-
+```r
 x010= gen.arima.wge(n= 100,d= 1,sn= 409)
 d1= artrans.wge(x010,phi.tr= 1)
 
@@ -981,43 +974,43 @@ d1= artrans.wge(x220,phi.tr= 1)
 d2= artrans.wge(d1,phi.tr= 1)
 aic.wge(d2,p= 0:10,q= 0:2)
 est.ar.wge(d2,p= 2)
-
+```
 
 
 ### Page 294   Note:  The plotts.sample.wge code below is correct.  The text has an extra arlimits=TRUE
-
+```r
 data(dow1985)
 plotts.sample.wge(dow1985)
 ddow= artrans.wge(dow1985,phi.tr= 1,plot= FALSE)
 plotts.sample.wge(ddow,arlimits= TRUE,speclimits=c(-10,10))
-
+```
 
 
 ### Page 296
-
+```r
 d1= artrans.wge(dow1985,phi.tr= 1)   
-
+```
 
 
 ### Page 297-298   Note:  last two lines should have d2.pop in place of d2
 Also, as of 7/14/22 uspop in tswge is incorrect
-
+```r
 data(uspop)
 uspop/1000000
 d1.pop= artrans.wge(uspop,phi.tr= 1)
 d2.pop= artrans.wge(d1.pop,phi.tr= 1)
 aic.wge(d2.pop,p= 0:10,q= 0:4)
 aic.wge(d2.pop,p= 0:10,q= 0:4,type= 'bic')
-
+```
 
 ### Page 297-298   
-
+```r
 x010= gen.arima.wge(n= 150,d= 1,sn= 409)
 fore.010= fore.arima.wge(x010[1:100],d= 1,n.ahead= 50,limits= FALSE)
-
+```
 
 ### Page 300
-   
+```r
 psi.weights.wge(phi= 1,lag.max= 50)
 
 par(mfrow= c(1,3))
@@ -1025,12 +1018,12 @@ t= 1:150
 plot(t[1:100],x010[1:100],xlim= c(0,150), type= 'l')
 fore.arima.wge(x010[1:100],d= 1,n.ahead= 50)
 points(t[101:150],x010[101:150], type= 'l')
-
+```
 
 
 
 ### Page 301-302
-
+```r
 est.ar.wge(x010,p= 1)
 
 t= 1:150
@@ -1040,12 +1033,12 @@ points(t[101:150],x010[101:150], type= 'l')
 
 roll.win.rmse.wge(x010,horizon = 50,d = 1) #ARIMA(0,1,0)
 roll.win.rmse.wge(x010,horizon = 50, phi = .965) #AR(1)
-
+```
 
 
 
 ### Page 302-303
-
+```r
 x210= gen.arima.wge(n= 250,phi= c(1.3,- .65),d= 1,sn= 4855)
 fore.210= fore.arima.wge(x210,phi= c(1.25,- .64),d= 1,n.ahead= 50)
 
@@ -1055,11 +1048,11 @@ plot(t[1:200],x210[1:200],xlim= c(0,250),type= 'l',xlab= 'Time')
 fore.210= fore.arima.wge(x210[1:200],phi= c(1.25,- .64),d= 1,n.ahead= 50)
 fore.210= fore.arima.wge(x210[1:200],phi= c(1.25,- .64),d= 1,n.ahead= 50)
 points(t[201:250],x210[201:250],type= 'l')
-
+```
 
 
 ### Page 303-304
-
+```r
 par(mfrow= c(2,2))
 x220= gen.arima.wge(n= 2000,phi= c(1.3,- .65),d= 2,sn= 450,plot= FALSE)
 t= 1:2000
@@ -1071,12 +1064,12 @@ points(t[201:250],x220[201:250],type= 'l',lwd= 2,col= 'black')
 abline(v= 200)
 plot(t,x220, type= 'l')
 abline(v= 200)
-
+```
 
 
 
 ### Page 305-306
-
+```r
 xA4= gen.arima.wge(n= 72,s= 4,mu= 50,sn= 52)
 xA12= gen.arima.wge(n= 72,s= 12,mu= 50,sn= 100)
 
@@ -1089,27 +1082,27 @@ abline(v= 12.5,lty= 2)
 factor.wge(phi= c(0,0,0,1))
 
 factor.wge(phi= c(rep(0,3),1))
-
+```
 
 
 ### Page 307
-
+```r
 factor.wge(phi= c(0,0,0,0,0,0,0,0,0,0,0,1))
 factor.wge(phi= c(rep(0,11),1))
-
+```
 
 
 ### Page 308
-
+```r
 xA4= gen.arima.wge(n= 72,s= 4,mu= 50,sn= 52)
 xA12= gen.arima.wge(n= 72,s= 12,mu= 50,sn= 100)
 plotts.sample.wge(xA4)
 plotts.sample.wge(xA12,trunc= 32)
-
+```
 
 
 ### Page 309-310
-
+```r
 xB= gen.arima.wge(n= 100,s= 4,phi= c(1.3,- .65),sn= 290)
 sB= artrans.wge(xB,phi.tr= c(0,0,0,1),plot= FALSE)
 plotts.sample.wge(xB)
@@ -1118,7 +1111,7 @@ plotts.sample.wge(sB)
 data(AirPassengers)
 logAP= log(AirPassengers)
 plotts.sample.wge(logAP)
-
+```
 
 
 ### Page 312-313
