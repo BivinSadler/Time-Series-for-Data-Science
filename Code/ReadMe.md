@@ -1,68 +1,68 @@
 # R Code By Chapter and Page Number:  
 
 Computer Code 
-### Pages 12-13
-data(dfw.2011)
-dfw.2011
-plot(dfw.2011)
-plot(dfw.2011,type= 'l')
+### Pages 12-13  
+data(dfw.2011)  
+dfw.2011  
+plot(dfw.2011)  
+plot(dfw.2011,type= 'l')  
 
 
-### Page 14
-dfw.2011.ts = ts(dfw.2011,start= c(2011,1),frequency= 12)
-dfw.2011.ts
-plot(dfw.2011.ts)
-class(dfw.2011.ts)
+### Page 14  
+dfw.2011.ts = ts(dfw.2011,start= c(2011,1),frequency= 12)  
+dfw.2011.ts  
+plot(dfw.2011.ts)  
+class(dfw.2011.ts)  
 
-### Page 15
-data(lynx)
-plot(lynx)
-class(lynx)
-lynx
+### Page 15  
+data(lynx)  
+plot(lynx)  
+class(lynx)  
+lynx  
 
-### Page 16
-dfw.2011.num = as.numeric(dfw.2011.ts)
-class(dfw.2011.num)
-dfw.2011.num
-
-
-### Page 16-17
-x = c(10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170)
-xTSmonth = ts(x,start = c(2018,6),frequency = 12)
-xTSmonth
-xTSweek = ts(x,start = c(1,4),frequency = 7)
-xTSweek
-window(xTSweek,start = c(2,1),end = c(2,7))
+### Page 16  
+dfw.2011.num = as.numeric(dfw.2011.ts)  
+class(dfw.2011.num)  
+dfw.2011.num  
 
 
-### Page 18
-data(AirPassengers) 
-window(AirPassengers,start = c(1950,1),end = c(1950,12))
-data(lynx)
-log.lynx= log(lynx)
-# Note that log.lynx retains the ts file information contained in file lynx
-plotts.wge(log.lynx)
+### Page 16-17  
+x = c(10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170)  
+xTSmonth = ts(x,start = c(2018,6),frequency = 12)  
+xTSmonth  
+xTSweek = ts(x,start = c(1,4),frequency = 7)  
+xTSweek  
+window(xTSweek,start = c(2,1),end = c(2,7))  
 
 
-### Page 20
-AirPassengersData = read.csv("Your file location// AirPassengers.csv",header = TRUE)
+### Page 18  
+data(AirPassengers)   
+window(AirPassengers,start = c(1950,1),end = c(1950,12))  
+data(lynx)  
+log.lynx= log(lynx)  
+# Note that log.lynx retains the ts file information contained in file lynx  
+plotts.wge(log.lynx)  
 
-### Page 21
-s1= scan("Your file location// Sample1.txt")
-s2= scan("Your file location// Sample2.txt")
 
-### Page 28
-data(ozona)
-ozona.ts= ts(ozona$CFS_Sold)
-plot(ozona.ts,type= 'o',xlab= 'Day')
+### Page 20  
+AirPassengersData = read.csv("Your file location// AirPassengers.csv",header = TRUE)  
 
-### Page 29-30
-data(bitcoin)
-# Linear interpolation with one missing value 
-bitcoin[162]=bitcoin[161]+(bitcoin[163]-bitcoin[161])/2
-# Linear interpolation with two adjacent missing values
-bitcoin[165]=bitcoin[164]+(bitcoin[167]-bitcoin[164])/3
-bitcoin[166]=bitcoin[164]+2*(bitcoin[167]-bitcoin[164])/3
+### Page 21  
+s1= scan("Your file location// Sample1.txt")  
+s2= scan("Your file location// Sample2.txt")  
+
+### Page 28  
+data(ozona)  
+ozona.ts= ts(ozona$CFS_Sold)  
+plot(ozona.ts,type= 'o',xlab= 'Day')  
+
+### Page 29-30  
+data(bitcoin)  
+# Linear interpolation with one missing value   
+bitcoin[162]=bitcoin[161]+(bitcoin[163]-bitcoin[161])/2  
+# Linear interpolation with two adjacent missing values  
+bitcoin[165]=bitcoin[164]+(bitcoin[167]-bitcoin[164])/3  
+bitcoin[166]=bitcoin[164]+2*(bitcoin[167]-bitcoin[164])/3  
 
 ### Page 43
 data(tesla)
