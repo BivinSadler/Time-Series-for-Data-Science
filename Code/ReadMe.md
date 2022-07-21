@@ -1848,7 +1848,7 @@ points(t[20:25],c(x2[20],f2.12),type= 'o',cex= 2,pch= 1)
 
 
 ### Page 434    
-
+```r
 melanoma= c(1.0,0.9,0.8,1.4,1.2,1.0,1.5,1.9,1.5,1.5,1.5,1.6,1.8,2.8,2.5,2.5,
 2.4,2.1,1.9,2.4,2.4,2.6,2.6,4.4,4.2,3.8,3.4,3.6,4.1,3.7,4.2,4.1,4.1,4.0,5.2,
 5.3, 5.3)
@@ -1862,10 +1862,10 @@ ccf(sunspot,melanoma,ylim= c(- 1,1))
 
 mel.64= melanoma[1:29]
 sun.64= sunspot[1:29]
-
+```
 
 ### Page 435    
-
+```r
 ## Univariate analysis/ forecasts for melanoma ##
 p.mel= aic.wge(mel.64,p= 0:10,q= 0:0)
 p.mel$p
@@ -1888,11 +1888,11 @@ VARselect(X, lag.max = 5, type = "const",season = NULL, exogen = NULL)
 #AIC = 5, BIC picks 4. We go with 4.
 
 VARfit= VAR(X,p= 4,type= 'const') ## This fits 9 parameters ##
-
+```
 
 
 ### Page 436  Note: The actual sunspot values are incorrectly plotted in Figure 10.12(b)
-    
+```r
 preds= predict(VARfit,n.ahead= 8)
 mel.f= preds$fcst$mel.64[,1] # VAR forecasts for mel.64
 sun.f= preds$fcst$sun.64[,1] # VAR forecasts for sun.64
@@ -1908,24 +1908,24 @@ points(year[29:37],c(sunspot[29],sun.f),type= 'o',cex= 1,pch= 1)
 
 RMSE_AR= sqrt(mean((melanoma[30:37]- pred_m$f[1:8])^2))
 RMSE_VAR= sqrt(mean((melanoma[30:37]- preds$fcst$mel.64[1:8])^2))
-
+```
 
 ### Page 437  
-
+```r
 data(cardiac)
 head(cardiac)
-
+```
 
 
 ### Page 439  
-
+```r
 VARselect(cardiac, lag.max = 10, type = "both")
-
+```
 
 
 
 ### Page 440   
-
+```r
 cardiacTrain = window(cardiac, start = c(1970,1), end = c(1978,40))
 cardiacTest = window(cardiac, start = c(1978,41), end = c(1979,40))
 
@@ -1950,11 +1950,11 @@ points(seq(457,508,1), preds7$fcst$cmort[,1], type= "l", lwd= 2,lty= 3)
 RMSE2 = sqrt(mean((cardiacTest[,"cmort"] - preds2$fcst$cmort[,1])^2))
 RMSE9 = sqrt(mean((cardiacTest[,"cmort"] - preds9$fcst$cmort[,1])^2))
 RMSE7 = sqrt(mean((cardiacTest[,"cmort"] - preds7$fcst$cmort[,1])^2))
-
+```
 
 
 ### Page 442   Note: In last 3 lines t[457,508] in text has been changed to t[457:508] 
-
+```r
 VARselect(cardiac, lag.max = 10, season = 52, type = "both")
 
 CMortVAR2 = VAR(cardiacTrain, type = "both", season = 52, p = 2)
@@ -1976,19 +1976,19 @@ t= 1:508
 points(t[457:508], preds2$fcst$cmort[,1], type= "l", lwd= 2, col = "red")
 points(t[457:508], preds9$fcst$cmort[,1], type= "l", lwd= 2, col = "blue")
 points(t[457:508], preds7$fcst$cmort[,1], type= "l", lwd= 2, col = "green")
-
+```
 
 
 ### Page 443
-   
+```r 
 RMSE2 = sqrt(mean((cardiacTest[,"cmort"] - preds2$fcst$cmort[,1])^2))
 RMSE9 = sqrt(mean((cardiacTest[,"cmort"] - preds9$fcst$cmort[,1])^2))
 RMSE7 = sqrt(mean((cardiacTest[,"cmort"] - preds7$fcst$cmort[,1])^2))
-
+```
 
 
 ### Page 444
-
+```r
 CMortVAR7 = VAR(cardiac, type = "both", p = 7)
 preds7= predict(CMortVAR7,n.ahead= 52)
 #cmort forecasts
@@ -2004,11 +2004,11 @@ t= 1:560
 points(t[509:560],preds7$fcst$cmort[,2], type = "l", lwd = 1, lty = 3)
 points(t[509:560],preds7$fcst$cmort[,1] , type = "l", lwd = 1.5, lty = 1)
 points(t[509:560],preds7$fcst$cmort[,3] , type = "l", lwd = 1, lty = 3)
-
+```
 
 
 ### Page 459
-
+```r
 set.seed(1) 
 AR1Fit = mlp(wtcrude2020, m = 1, hd = 0, lags = 1, difforder = 0, reps = 5)
 plot(AR1Fit)
@@ -2016,11 +2016,11 @@ plot(AR1Fit)
 AR1Fit
 
 AR1Fit$net$weights
-
+```
 
 
 ### Page 460
-
+```r
 estAR1 = est.ar.wge(wtcrude2020,p = 1, type = "burg")
 estAR1$phi
 
@@ -2028,45 +2028,45 @@ preds = forecast(AR1Fit,h = 1)
 preds$all.mean
 
 preds$mean # even though this is the median
-
+```
 
 
 
 
 ### Page 461
-
+```r
 preds = forecast(AR1Fit,h = 10)
 preds$all.mean
 
 preds$mean #even though this is still the median
-
+```
 
 
 
 ### Page 463   
-
+```r
 rwAR1Fit = roll.win.rmse.nn.wge(wtcrude2020,horizon = 1,fit_model = AR1Fit)
-
+```
 
 
 ### Page 464   
-
+```r
 rwAR1Fit = roll.win.rmse.nn.wge(wtcrude2020,horizon = 10,fit_model = AR1Fit)
-
+```
 
 
 
 ### Page 465   
-
+```r
 set.seed(1) 
 AR3Fit = mlp(ts(wtcrude2020),hd = 0, lags = c(1,2,3), difforder = 0,
 reps = 5, sel.lag = FALSE)
 AR3Fit
-
+```
 
 
 ### Page 466   
-
+```r
 set.seed(1) 
 AutoFit = mlp(ts(wtcrude2020),hd = 0, lags = c(1,2,3), difforder = 0,
 reps = 5, sel.lag = TRUE)
@@ -2078,48 +2078,48 @@ preds$mean
 
 preds = forecast(AutoFit,h = 10)
 preds$mean
-
+```
 
 
 
 ### Page 467   
-
+```r
 rwAR3Fit = roll.win.rmse.nn.wge(wtcrude2020,horizon = 10, fit_model = AR3Fit)
 
 rwAutoFit = roll.win.rmse.nn.wge(wtcrude2020,horizon = 10,fit_model= AutoFit)
-
+```
 
 
 ### Page 469   
-
+```r
 set.seed(1) 
 DeepFit = mlp(ts(wtcrude2020),hd = 2, lags = c(1,2,3), difforder = 0,
 reps = 5, sel.lag = FALSE)
 DeepFit
 plot(DeepFit)
-
+```
 
 
 ### Page 470   
-
+```r
 preds = forecast(DeepFit,h = 10)
 round(preds$mean, 2)
 
 rwDeepFit = roll.win.rmse.nn.wge(wtcrude2020,horizon = 10,fit_model= DeepFit)
-
+```
 
 
 
 ### Page 471   
-
+```r
 set.seed(1) 
 fit.1.12.H5 = mlp(AirPassengers,difforder = c(1,12),allow.det.season = FALSE)
 fit.1.12.H5
-
+```
 
 
 ### Page 472   
-
+```r
 plot(fit.1.12.H5)
 
 rwfit1.12.H5 = roll.win.rmse.nn.wge(AirPassengers,horizon = 36, fit.1.12.H5)
@@ -2127,11 +2127,11 @@ rwfit1.12.H5 = roll.win.rmse.nn.wge(AirPassengers,horizon = 36, fit.1.12.H5)
 set.seed(1) 
 fit.1.H5 = mlp(AirPassengers,allow.det.season = FALSE)
 fit.1.H5
-
+```
 
 
 ### Page 473   
-
+```r
 rwfit.1.H5 = roll.win.rmse.nn.wge(AirPassengers,horizon = 36, fit.1.H5)
 frequency(AirPassengers)
 
@@ -2141,11 +2141,11 @@ fitSeasonal = mlp(AirPassengers,allow.det.season = TRUE)
 fitSeasonal
 
 plot(fitSeasonal)
-
+```
 
 
 ### Page 474   
-
+```r
 rwfitSeasonal = roll.win.rmse.nn.wge(AirPassengers,h = 36, fit_model = fitSeasonal)
 
 set.seed(1) 
@@ -2155,8 +2155,6 @@ finalFit = forecast(fitSeasonal, h = 36)
 plot(t[1:144], AirPassengers, type = "l", xli = c(0,185), ylim = c(100, 800),
 xlab = "Time")
 lines(t[145:180], finalFit$mean,lty = 3, lwd = 3)
-
-
 
 SMtrain = melanoma2.0[1:29,]
 SMtest = melanoma2.0[30:37,]
@@ -2173,22 +2171,22 @@ set.seed(1)
 fit.mlp.SP = mlp(ts(SMtrainDF$Sunspot),reps = 20, comb = "median")
 fore.mlp.SP = forecast(fit.mlp.SP, h = 8)
 fore.mlp.SP
-
+```
 
 
 
 
 ### Page 477   
-
+```r
 plot(fore.mlp.SP)
 
 SMDF_fore = data.frame(Sunspot = ts(fore.mlp.SP$mean))
 SMDF = data.frame(Sunspot = ts(c(SMtrainDF$Sunspot,SMDF_fore$Sunspot)))
-
+```
 
 
 ### Page 478   
-
+```r
 fore.mlp = forecast(fit.mlp1, h = 8, xreg = SMDF)
 fore.mlp
 
@@ -2196,11 +2194,11 @@ plot(fore.mlp)
 
 RMSE = sqrt(mean((SMtest$melanoma - fore.mlp$mean)^2))
 RMSE
-
+```
 
 
 ### Page 479   
-
+```r
 set.seed(1) 
 fit.mlp2 = mlp(ts(SMtrain$melanoma), reps = 20,comb = "median",
 xreg = SMtrainDF, allow.det.season = FALSE)
@@ -2210,11 +2208,11 @@ plot(fit.mlp2)
 fore.mlp = forecast(fit.mlp2, h = 8, xreg = SMDF)
 fore.mlp
 plot(fore.mlp)
-
+```
 
 
 ### Page 480   
-
+```r
 RMSE = sqrt(mean((SMtest$melanoma - fore.mlp$mean)^2))
 RMSE
 
@@ -2223,12 +2221,12 @@ set.seed(1)
 fit.mlp3 = mlp(ts(melanoma2.0$melanoma), reps = 20,comb = "median",
 xreg = data.frame(Sunspot = melanoma2.0$sunspot), allow.det.season = FALSE)
 fit.mlp3
-
+```
 
 
 
 ### Page 481   
-
+```r
 set.seed(1) 
 fit.mlp.SP = mlp(ts(melanoma2.0$sunspot),reps = 50, comb = "median")
 fore.mlp.SP = forecast(fit.mlp.SP, h = 8)
@@ -2240,11 +2238,11 @@ fore.mlp = forecast(fit.mlp3, h = 8, xreg = SMDF)
 fore.mlp
 
 plot(fore.mlp)
-
+```
 
 
 ### Page 483   
-
+```r
 cardiacTrain = window(cardiac, start = c(1970,1), end = c(1978,40))
 cardiacTest = window(cardiac, start = c(1978,41), end = c(1979,40))
 
@@ -2256,11 +2254,11 @@ fit.mlp.temp
 plot(fit.mlp.temp)
 fore.mlp.temp = forecast(fit.mlp.temp, h = 52)
 plot(fore.mlp.temp)
-
+```
 
 
 ### Page 484   
-
+```r
 # Particulates
 set.seed(1) 
 fit.mlp.part = mlp(ts(cardiacTrain[,"part"],frequency = 52),reps = 50,
@@ -2269,12 +2267,12 @@ fit.mlp.part
 plot(fit.mlp.part)
 fore.mlp.part = forecast(fit.mlp.part, h = 52)
 plot(fore.mlp.part)
-
+```
 
 
 
 ### Page 485
-
+```r
 cardiacDF_xreg = data.frame(temp = ts(cardiacTrain[,"tempr"]),
 part = ts(c(cardiacTrain[,"part"])))
 
@@ -2292,11 +2290,11 @@ fore.mlp.cmort = forecast(fit.mlp.cmort, h = 52, xreg = CMDF_fore)
 plot(fore.mlp.cmort)
 RMSE = sqrt(mean((cardiacTest[,"cmort"][1:52] - fore.mlp.cmort$mean)^2))
 RMSE
-
+```
 
 
 ### Page 486
-
+```r
 cardiacDF_xreg = data.frame(temp = ts(cardiacTrain[,"tempr"]), part =
 ts(c(cardiacTrain[,"part"])))
 fit.mlp.cmortS = mlp(ts(cardiacTrain[,"cmort"],frequency = 52),reps = 50,comb
@@ -2307,11 +2305,11 @@ plot(fit.mlp.cmortS)
 CMDF_fore = data.frame(temp =
 ts(c(cardiacTrain[,"tempr"],fore.mlp.temp$mean)), part =
 ts(c(cardiacTrain[,"part"],fore.mlp.part$mean)))
-
+```
 
 
 ### Page 487  Note:  RMSE value differs siightly from text
-
+```r
 fore.mlp.cmortS = forecast(fit.mlp.cmortS, h = 52, xreg = CMDF_fore)
 plot(fore.mlp.cmortS)
 RMSE = sqrt(mean((cardiacTest[,"cmort"][1:52] - fore.mlp.cmortS$mean)^2))
@@ -2319,11 +2317,11 @@ RMSE
 
 CMortVAR2S = VAR(cardiacTrain, season = 52, type = "both", p = 2)
 preds2S= predict(CMortVAR2S,n.ahead= 52)
-
+```
 
 
 ### Page 488
-
+```r
 ensemble = (preds2S$fcst$cmort[,1] + fore.mlp.cmortS$mean)/ 2
 
 #Plot
@@ -2333,3 +2331,4 @@ From A VAR/ MLP Ensemble")
 lines(seq(457,508,1), ensemble, type = "l", lwd = 4, col = "green")
 RMSEENSEMBLE = sqrt(mean((cardiacTest[,"cmort"] - ensemble)^2))
 RMSEENSEMBLE
+```
