@@ -73,9 +73,9 @@ plot(ozona.ts,type= 'o',xlab= 'Day')
 ### Page 29-30  
 ```r
 data(bitcoin)  
-\# Linear interpolation with one missing value   
+# Linear interpolation with one missing value   
 bitcoin[162]=bitcoin[161]+(bitcoin[163]-bitcoin[161])/2  
-\# Linear interpolation with two adjacent missing values  
+# Linear interpolation with two adjacent missing values  
 bitcoin[165]=bitcoin[164]+(bitcoin[167]-bitcoin[164])/3  
 bitcoin[166]=bitcoin[164]+2*(bitcoin[167]-bitcoin[164])/3  
 ```
@@ -101,17 +101,19 @@ z= rnorm(n= 60,sd= 1)
 x= cosine+ line+ z
 plot(x)
 ma.smooth.wge(x,order= 5)
-```r
+```
 
 
 ### Page 45
+```r
 data(sunspot2.0.month)
 data(sunspot2.0)
 sunspot2.0.1749= window(sunspot2.0,start= 1749,end= 2020)
 ss.yr= aggregate(sunspot2.0.month,FUN= mean)
-
+```
 
 ### Page 46
+```r
 data(sunspot2.0)
 data(sunspot2.0.month)
 sunspot2.0.12= ma.smooth.wge(sunspot2.0.month,order= 12,plot= FALSE)
@@ -122,27 +124,29 @@ plotts.wge(sunspot2.0.1749)
 plotts.wge(ss.yr)
 plotts.wge(sunspot2.0.month)
 plotts.wge(sunspot2.0.sm12)
-
+```
 
 
 ### Page 48   Note:  This code replaces the incorrect code on ### Page 48
 
+```r
 data(tx.unemp.unadj)
 tx.unemp.sm= ma.smooth.wge(tx.unemp.unadj,order= 12, plot= FALSE)
 tx.unemp.sm12= ts(tx.unemp.sm$smooth,start= c(2000,1),frequency= 12)
 plotts.wge(tx.unemp.sm12)
-
+```
 
 
 ### Page 51
+```r
 data(AirPassengers)
 logAirPassengers= log(AirPassengers)
 logair.12= ma.smooth.wge(logAirPassengers,order= 12)
 logair.sm12= ts(logair.12$smooth,start= c(1949,1),frequency= 12)
-
-
+```
 
 ### Page 51
+```r
 data(AirPassengers)
 logAirPassengers= log(AirPassengers)
 logair.12= ma.smooth.wge(logAirPassengers,order= 12)
@@ -150,19 +154,21 @@ logair.sm12= ts(logair.12$smooth,start= c(1949,1),frequency= 12)
 
 seas.logair= logAirPassengers- logair.sm12
 round(seas.logair,4) # rounding to 4 decimal places for listing below
-
+```
 
 
 
 ### Page 52
+```r
 # convert the ts file to a vector
 seas.logair.numeric= as.numeric(seas.logair) # convert ts file to a vector
 # convert this vector to a matrix with ncol= number of years
 seas.logair.matrix= matrix(seas.logair.numeric,ncol= 12) #12 years and 12 months
-
+```
 
 
 ### Page 53
+```r
 seas.logair.matrix.t= t(seas.logair.matrix)
 
 months= colMeans(seas.logair.matrix.t, na.rm= TRUE)
@@ -172,15 +178,18 @@ seas.means= rep(months,12) # replicates the 12 monthly means for each year (12)
 seas.means= ts(seas.means,start= c(1949,1),frequency= 12)
 
 logair.noise= logAirPassengers- logair.sm12- seas.means
+```
 
 ### Page 54  Note:  This code corrects the incorrect code on ### Page 54
+```r
 data(tx.unemp.unadj)
 tx.unemp.sm= ma.smooth.wge(tx.unemp.unadj,order= 12,plot= FALSE)
 tx.unemp.sm12= ts(tx.unemp.sm$smooth,start= c(2000,1), frequency= 12)
 plotts.wge(tx.unemp.sm12)
-
+```
 
 ### Pages 54-55
+```r
 seas.tx.unemp= tx.unemp.unadj- tx.unemp.sm12
 seas.tx.unemp.numeric= as.numeric(seas.tx.unemp) #convert ts file to a vector
 # convert this vector to a matrix with ncol= number of years
@@ -189,18 +198,20 @@ seas.tx.unemp.matrix.t= t(seas.tx.unemp.matrix) # transpose matrix
 months= colMeans(seas.tx.unemp.matrix.t,na.rm= TRUE) # colMeans are monthly means
 seas.means= rep(months,20) # replicates the 12 monthly means
 tx.unemp.noise= tx.unemp.unadj- tx.unemp.sm12- seas.means
-
+```
 
 ### Page 56
+```r
 AirPass.sm12= ma.smooth.wge(AirPassengers,order= 12)
 AirPass.sm12= ts(AirPass.sm12$smooth,start= c(1949,1),frequency= 12)
 
 seas.AirPass= AirPassengers/ AirPass.sm12
-
+```
 
 
 
 ### Page 57
+```r
 seas.AirPass.numeric= as.numeric(seas.AirPass) #convert ts file to a vector
 # convert this vector to a matrix with ncol= number of years
 seas.AirPass.matrix= matrix(seas.AirPass.numeric,ncol= 12) # 12 years
@@ -210,20 +221,25 @@ seas.means= rep(months,12) # replicates the 12 monthly means for each year (12)
 seas.means= ts(seas.means,start= c(1949,1),frequency= 12)
 
 Air.Pass.noise= AirPassengers/ (AirPass.sm12*seas.means)
-
+```
 
 ### Page 58  Note: We have included  the three lines to calculate seas.means because seas.means was the name we  used for both AirPassengers and Texas Unemployment data
+```r
 months=colMeans(seas.tx.unemp.matrix.t, na.rm=TRUE)
 seas.means=rep(months,20)  # replicates the 12 monthly means for each year (12)
 seas.means=ts(seas.means,start=c(2000,1),frequency=12)
 tx.unemp.adj.1 = tx.unemp.unadj - seas.means
+```
 
 ### Page 59
+```r
 library(seasonal) # assuming that "seasonal" has been installed
 census= seas(tx.unemp.unadj)
 # the seasonally adjusted data are in the ts file census$data[,3]
+```
 
 ### Page 60
+```r
 # this code is included to compute the correct seasonal means
 months= colMeans(seas.logair.matrix.t, na.rm= TRUE)
 round(months,4)
@@ -235,50 +251,59 @@ AirPassengers.adj = AirPassengers/ seas.means
 library(seasonal) # assuming that seasonal has been installed
 census= seas(AirPassengers)
 # the seasonally adjusted data are in the ts file census$data[,3]
-
+```
 
 ### Page 62
+```r
 data(wtcrude2020)
 wtc36= window(wtcrude2020,start= c(2018,1))
 wtc36= as.numeric(wtc36)
 ma5= ma.pred.wge(wtc36,order= 5,k.ahead= 4)
-
+```
 
 
 ### Page 65
+```r
 wtc36.exp= exp.smooth.wge(wtc36,alpha= .4,n.ahead= 4)
-
+```
 
 
 ### Page 66
+```r
 data(dfw.yr)
 exp.smooth.wge(dfw.yr,alpha= .2,n.ahead= 10)
-
+```
 
 
 ### Page 68
+```r
 # Figure 2.20(a)
 ap.hw= HoltWinters(AirPassengers,seasonal= "mult")
 plot(ap.hw)
 # Figure 2.20(b)
 ap.pred= predict(ap.hw,n.ahead= 36)
 plot(ap.hw,ap.pred,lty= 1:2)
-
+```
 
 
 ### Page 69
+```r
 AP9= window(AirPassengers,start= c(1949,1),end= c(1957,12))
 AP9.hw= HoltWinters(AP9,seasonal= "mult")
 AP9.pred= predict(AP9.hw,n.ahead= 36)
 plot(AirPassengers,type= 'l')
 points(AP9.pred,type= 'l',lty= 2)
+```
 
 ### Page 93
+```r
 x10= c(40,27,35,34,31,27,26,34,37,47)
 x15= c(27,48,49,33,51,39,48,42,46,31)
 cor.x10x15= cor(x10,x15)
+```
 
 ### Page 124
+```r
 data(lynx)
 llynx= log10(lynx)
 x3= gen.arma.wge(n= 100,phi= c(1.75,- .95),sn= 203)
@@ -286,8 +311,10 @@ par(mfrow= c(1,3),mar= c(4,3,.2,.5))
 plotts.wge(sunspot2.0)
 plotts.wge(llynx)
 plotts.wge(x3)
+```
 
 ### Page 126
+```r
 t= 1:100
 y= rep(0,100)
 y1= rep(0,100)
@@ -302,10 +329,11 @@ plot(y,type= 'l',xlab= '(a) Linear Combination of Sines',ylim=c(-6,6))
 plot(y1,type= 'l',xlab= '(b) Component 1',ylim=c(-6,6))
 plot(y2,type= 'l',xlab= '(c) Component 2',ylim=c(-6,6))
 plot(y3,type= 'l',xlab= '(d) Component 3',ylim=c(-6,6))
-
+```
 
 
 ### Page 129
+```r
 t= 1:1000
 tm= t/ 200
 y1= sin(2*pi*.2*tm)
@@ -316,9 +344,10 @@ par(mfrow= c(1,1),mar= c(2.5,2.5,1,1.5))
 plot(tm,y1,type= 'l',xlab= 'Time',xlim= c(0,5))
 points(tm,z1,type= 'l',lwd= 2)
 points(tp,yp,pch= 19)
-
+```
 
 ### Page 133
+```r
 x= gen.arma.wge(n= 200,phi= c(0.1300,1.4414,- 0.0326,- 0.8865),sn= 9310)
 # this generates an AR(4) realization (details in Chapter 5)
 par(mfrow= c(2,3))
@@ -329,17 +358,19 @@ sample.spec.wge(x)
 parzen.wge(x)
 parzen.wge(x,trunc= 8)
 parzen.wge(x,trunc= 175)
-
+```
 
 
 ### Page 135
+```r
 x= gen.arma.wge(n= 200,phi= c(0.1300,1.4414,- 0.0326,- 0.8865),sn= 9310)
 # this generates an AR(4) realization (details in Chapter 5)
 plotts.sample.wge(x)
-
+```
 
 
 ### Page 136
+```r
 y1= rep(0,100)
 y2= rep(0,100)
 y3= rep(0,100)
@@ -352,20 +383,22 @@ par(mfrow= c(1,3))
 plotts.wge(y)
 parzen.wge(y,trunc= 20)
 parzen.wge(y,trunc= 30)
-
+```
 
 
 ### Page 138
+```r
 data(sunspot2.0)
 plotts.sample.wge(sunspot2.0)
 
 data(llynx)
 plotts.sample.wge(llynx)
-
+```
 
 
 
 ### Page 141
+```r
 # Note: This code is for WT Crude from Jan 1990 through December 2020
 data(wtcrude2020)
 n= length(wtcrude2020)
@@ -379,11 +412,12 @@ par(mfrow= c(1,3),mar= c(4.5,3,2,.5))
 plot(wtcrude2020,type= 'l',xlab= '(a) WT Crude Oil Price')
 plot(s9$smooth,type= 'l',xlab= '(b) WT Crude Smoothed')
 plot(d1.wt,type= 'l',xlab= '(c) WR Crude Differenced data',ylim= c(- 50,50))
-
+```
 
 
 
 ### Page 142
+```r
 x= gen.arma.wge(n= 200,phi= c(0.1300,1.4414,- 0.0326,- 0.8865),sn= 9310)
 n= length(x)
 par(mfrow= c(3,2),mar= c(3,2.5,1,1.5))
@@ -395,9 +429,10 @@ parzen.wge(s6$smooth[4:197])
 for(t in 2:n) d1[t- 1]= x[t] - x[t- 1]
 plot(d1,type= 'l',ylim= c(- 20,20))
 parzen.wge(d1[1:n- 1])
-
+```
 
 ### Page 143  Note:  the last line should be parzen.wge(high$x.filt) instead of parzenww.wge(high$x.filt) which is in the text
+```r
 par(mfrow= c(3,2),mar= c(3,2.5,1,1.5))
 plot(x,type= 'l',ylim= c(- 20,20))
 parzen.wge(x)
@@ -407,38 +442,43 @@ parzen.wge(low$x.filt)
 high= butterworth.wge(x,type= 'h',cutoff= .25,plot= FALSE)
 plot(high$x.filt,type= 'l',ylim= c(- 20,20))
 parzen.wge(high$x.filt)
-
+```
 
 
 ### Page 157
+```r
 plotts.true.wge(phi= .9,plot.data= FALSE)
 plotts.true.wge(phi= .7,plot.data= FALSE)
-
+```
 
 
 
 ### Page 158
+```r
 x= gen.arma.wge(n= 150,phi= .9,sn= 20)
 plotts.sample.wge(x)
 
 x= gen.arma.wge(n= 150,phi= .7,sn= 130)
 plotts.sample.wge(x)
-
+```
 
 
 ### Page 159
+```r
 gen.arma.wge(n= 150,phi= .95,sn= 305)
 gen.arma.wge(n= 150,phi= .99,sn= 404)
-
+```
 
 
 ### Page 161
+```r
 plotts.true.wge(n= 100,phi= - .7,plot.data= FALSE)
 x= gen.arma.wge(n= 150,phi= - .7,sn= 878)
 plotts.sample.wge(x)
-
+```
 
 ### Page 162
+```r
 x= gen.arima.wge(n= 150, d= 1,sn= 734)
 
 a= gen.arma.wge(n= 500,sn= 10,plot= FALSE) #generates 500 N(0,1) white noise
@@ -447,65 +487,74 @@ xx= rep(0,150)
 for(i in 1:499) {xx.spin[i+ 1]= 1.1*xx.spin[i] + a[i]}
 plot(xx[1:150])
 xx[1:150]= xx.spin[350:499] # generates 500 and keeps the last 150
-
+```
 
 
 ### Page 165
+```r
 unit.circle.wge(real= c(1.11,- 1.43),imaginary= c(0,0))
-
+```
 
 ### Page 166
+```r
 unit.circle.wge(real= c(- 1.25,.67),imaginary= c(0,0))
-
+```
 
 
 ### Page 167
+```r
 unit.circle.wge(real= c(1,1),imaginary= c(.5,- .5))
-
+```
 
 ### Page 168
+```r
 plotts.true.wge(phi= c(.2,.63),plot.data= FALSE)
 x= gen.arma.wge(n= 150,phi= c(.2,.63),sn= 13)
 plotts.sample.wge(x)
-
+```
 
 
 ### Page 170
+```r
 plotts.true.wge(phi= c(1.6,- .8),plot.data= FALSE)
 x= gen.arma.wge(n= 150,phi= c(1.6,- .8),sn= 19)
 plotts.sample.wge(x)
-
+```
 
 ### Page 171
+```r
 plotts.true.wge(phi= c(- .5,- .8),plot.data= FALSE)
 x= gen.arma.wge(n= 150,phi= c(- .5,- .8),sn= 19)
 plotts.sample.wge(x)
-
-
+```
 
 ### Page 172
+```r
 data(tswge)
 plotts.wge(lynx)
 llynx= log10(lynx)
 plotts.sample.wge(llynx)
-
+```
 
 
 ### Page 176
+```r
 x= gen.arma.wge(n= 200,phi= c(0.1300,1.4414,- .0326,- .8865),sn= 9310,plot= FALSE)
 plotts.sample.wge(x)
-
+```
 
 
 
 ### Page 180
+```r
 x= gen.arma.wge(n= 150,phi= c(1.95,- 1.85,.855),sn= 129,plot= FALSE)
 plotts.sample.wge(x)
-
+```
 
 
 
 ### Page 181
+```r
 xa= gen.arma.wge(n= 150,phi= c(1.8,- .96,0,.001),mu= 0,sn= 3233)
 plotts.sample.wge(xa) # plots (a- c)
 
@@ -514,20 +563,22 @@ plotts.sample.wge(xd) # plots (d- f)
 
 xg= gen.arma.wge(n= 150,phi= c(2.6,- 3.34,2.46,- .9024),mu= 0,sn= 3233)
 plotts.sample.wge(xg) # plots (g- i)
-
+```
 
 
 ### Page 183
+```r
 cf= mult.wge(fac1= c(1.8,- .95),fac2= - .6, fac3= c(0,- .8))
 
 x= gen.arma.wge(n= 200,phi= cf$model.coef,sn= 10)
 
 x1= gen.arma.wge(n= 200,phi= c(1.2,- .67,.39,.104,- .456),sn= 10)
-
+```
 
 
 
 ### Page 185 
+```r
 A= gen.arma.wge(n= 150,phi= c(1.95,- 1.85,.855), sn= 3847)
 plotts.sample.wge(A) # plots (a- c)
 
@@ -536,53 +587,52 @@ plotts.sample.wge(A_real) # plots(d- f)
 
 A_complex= gen.arma.wge(n= 150,phi= c(1.70,- 1.60,.63), sn= 2813)
 plotts.sample.wge(A_complex) # plots(g- i)
-
+```
 
 
 ### Page 191 
-
+```r
 psi.weights.wge(phi= c(1.6,- .8),lag.max= 5)
-
+```
 
 
 ### Page 194 
-
+```r
 plotts.true.wge(phi= 0,theta= .99,lag.max= 25,vara= 1,plot.data= FALSE)
 
 x= gen.arma.wge(n= 150,theta= .99,sn= 53)
 plotts.sample.wge(x)
-
+```
 
 
 ### Page 195 
-
+```r
 x= gen.arma.wge(n= 150,theta= - .8,sn= 363)
 plotts.sample.wge(x)
-
-
+```
 
 
 ### Page 197 
-
+```r
 ma2= plotts.true.wge(phi= 0,theta= c(.4,- .9),plot.data= FALSE)
 
 x= gen.arma.wge(n= 150,theta= c(.4,- .9),sn= 65)
 plotts.sample.wge(x)
-
+```
 
 
 ### Page 199 
-
+```r
 pi.weights.wge(theta= c(.4,- .9),lag.max= 6)
-
+```
 
 ### Page 202 
-
+```r
 pi.weights.wge(phi= c(1.6,- .8),theta= -.9,lag.max= 6)
-
+```
 
 ### Page 204   Note:  the second instance of plots.sample.wge has the .wge left off in the text
-
+```r
 fig5.26a= gen.arma.wge(n= 150,phi= c(2.57,- 2.50,.92),sn= 65)
 plotts.sample.wge(fig5.26a) # this plots Figure 5.26(a- c)
 
@@ -591,81 +641,83 @@ plotts.sample.wge(fig5.26d) # this plots Figure 5.26(d- f)
 
 fig5.26g= gen.arma.wge(n= 150,phi= c(2.57,- 2.50,.92),,theta= .92,sn= 65)
 plotts.sample.wge(fig5.26g) # this plots Figure 5.26(g- i)
-
+```
 
 
 ### Page 207   Note:  the second instance of plotts.sample.wge has the .wge left off in the text
-
+```r
 fig5.27a= gen.arma.wge(n= 150,phi= .95,sn= 20)
 plotts.sample.wge(fig5.27a) # this plots Figure 5.27(a- c)
 
 fig5.27d= gen.arma.wge(n= 150,phi= .95,theta= .8,sn= 20)
 plotts.sample.wge(fig5.27d) # this plots Figure 5.27 (d- f)
-
+```
 
 
 
 ### Page 219  
-
+```r
 arma31= gen.arma.wge(n= 150,phi= c(2.57,- 2.50,.92),theta= .92,mu= 30,sn= 65)
 
 est.arma.wge(arma31,p= 3,q= 1)
-
+```
 
 ### Page 223  
-
+```r
 est.arma.wge(arma31,p= 3,q= 1)
-
+```
 
 ### Page 224  
-
+```r
 par(mfrow= c(1,2))
 a= gen.arma.wge(n= 150,phi= c(1.71,- 1.22,.475),sn= 327,plot= FALSE)
 b= rev(a)
 plotts.wge(a)
 plotts.wge(b)
-
+```
 
 
 ### Page 225  
+```r
 A_real= gen.arma.wge(n= 150,phi= c(1.71,- 1.22,.475),sn= 327)
 A_real.ml= est.ar.wge(A_real,p= 3,type= 'mle')
 # The command A_real.ml= est.ar.wge(A_real,p= 3) produces the same results
 # since 'mle' is the default type.
-
+```
 
 ### Page 226  
+```r
 A_real.yw= est.ar.wge(A_real,p= 3,method= 'yw')
 A_real.burg= est.ar.wge(A_real,p= 3,method= 'burg')
 
 ar4= gen.arma.wge(n= 100,phi= c(2.76,- 3.76,2.6,- .89),sn= 468)
 plotts.sample.wge(ar4)
-
+```
 
 ### Page 227
-  
+```r
 ar4.ml= est.ar.wge(ar4,p= 4)
 ar4.yw= est.ar.wge(ar4,p= 4,type= 'yw')
 ar4.bg= est.ar.wge(ar4,p= 4,type= 'burg')
-
+```
 
 ### Page 230
-
+```r
 x= gen.arma.wge(n= 150,phi= 0,theta= 0,sn= 147)
-
+```
 
 
 ### Page 233
-
+```r
 aic.wge(x,p= 0:10,q= 0:4,type= 'aic')
 
 aic.wge(x,p= 0:10,q= 0:0,type= 'aic')
 
 arma31= gen.arma.wge(n= 150,phi= c(2.57,- 2.50,.92),theta= .92,mu= 30,sn= 65)
-
+```
 
 ### Page 234
-
+```r
 a= aic.wge(arma31,p= 0:12, q= 0:4)
 
 b= aic.wge(arma31,p= 0:12,q= 0:4,type= 'bic')
@@ -674,38 +726,39 @@ cc= aic.wge(arma31,p= 0:12,q= 0:4,type= 'aicc')
 aic5.wge(arma31,p= 0:12,q= 0:4)
 aic5.wge(arma31,p= 0:12,q= 0:4,type= 'aicc')
 aic5.wge(arma31,p= 0:12,q= 0:4,type= 'bic')
-
+```
 
 
 ### Page 236
-
+```r
 data(lynx)
 llynx= log10(lynx)
 aic5.wge(llynx,p= 0:12,q= 0:4)
 aic5.wge(llynx,p= 0:12,q= 0:4,type= 'aicc')
 aic5.wge(llynx,p= 0:12,q= 0:4,type= 'bic')
-
+```
 
 
 ### Page 236  Note: In the text the gen.arma.wge statement is missing the theta=.92 part of the generated model
-
+```r
 arma31.500= gen.arma.wge(n= 500,phi= c(2.57,- 2.50,.92),theta= .92,mu= 30,sn= 65)
 
 aic5.wge(arma31.500,p= 0:12, q= 0:4)
 aic5.wge(arma31.500,p= 0:12, q= 0:4,type= 'bic')
 aic5.wge(arma31.500,p= 0:12, q= 0:4,type= 'aicc')
-
+```
 
 
 ### Page 240  
+```r
 A_real= gen.arma.wge(n= 150,phi= c(1.71,- 1.22,.475),sn= 327)
 
 aic5.ar.wge(A_real,p= 0:12,type= 'bic',method= 'burg')
-
+```
 
 
 ### Page 241  Note: aic.ar.wge should not have the q=0:4 parameters in the call statement.
-  
+```r
 data(sunspot2.0)
 ss= aic.ar.wge(sunspot2.0,p= 0:12)
 ss
@@ -714,18 +767,18 @@ aic5.ar.wge(sunspot2.0,p= 0:12)
 
 In Try This:
 aic5.ar.wge(sunspot2.0,p= 0:20)
-
+```
 
 ### Page 242
-
+```r
 aic5.ar.wge(sunspot2.0,p= 0:20,method= 'burg')
 
 aic5.ar.wge(sunspot2.0,p= 0:20,type= 'bic')
-
+```
 
 
 ### Pages 247-248
-
+```r
 x= c(14.0,14.8,14.0,14.0,13.8,12.4,12.9,11.9,12.0,10.9,10.5,9.2,10.7,11.3,
 9.2,8.6,8.2,7.3,7.9,8.8)
 aic.x= aic.wge(x,p= 0:4,q= 0:0) # aic.x$p is the value of p selected by AIC
@@ -737,10 +790,10 @@ mean(x)
 # the estimated mean is 11.12
 
 fore.x= fore.arma.wge(x,est.x$phi,n.ahead= 20,limits= FALSE)
-
+```
 
 ### Page 249
-
+```r
 y= c(40.3,36.6,40.1,42.4,40.7,38.5,39.3,42.0,41.5,39.3,37.8,40.4,43.5,41.5,37.4,
 37.8,40.6,43.2,40.7,38.71,40.9,40.7,40.2,39.5,39.4)
 # y is a time series of length n= 25
@@ -752,23 +805,23 @@ est.y= est.ar.wge(y,aic.y$p)
 # sample mean is $xbar= 40.12
 
 fore.y= fore.arma.wge(y,phi= est.y$phi,n.ahead= 20,limits= FALSE)
-
+```
 
 ### Page 252
-
+```r
 arma21= gen.arma.wge(n= 100,phi= c(1.6,- .9),theta= .9,mu= 20,sn= 5789)
 
 aic5.wge(arma21,p= 0:12,q= 0:4)
 
 est21= est.arma.wge(arma21,p= 2,q= 1)
-
+```
 
 
 ### Page 253
-
+```r
 fore.21= fore.arma.wge(arma21,phi= est21$phi,theta= est21$theta,n.ahead= 30,
 limits= FALSE)
-
+```
 
 
 ### Page 254
