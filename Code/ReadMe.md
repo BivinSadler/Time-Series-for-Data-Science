@@ -10,16 +10,20 @@ plot(dfw.2011,type= 'l')
 ```
 
 ### Page 14  
+```r
 dfw.2011.ts = ts(dfw.2011,start= c(2011,1),frequency= 12)  
 dfw.2011.ts  
 plot(dfw.2011.ts)  
 class(dfw.2011.ts)  
+```
 
 ### Page 15  
+```r
 data(lynx)  
 plot(lynx)  
 class(lynx)  
 lynx  
+```
 
 ### Page 16  
 dfw.2011.num = as.numeric(dfw.2011.ts)  
