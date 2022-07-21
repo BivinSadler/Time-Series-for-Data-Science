@@ -1,4 +1,4 @@
-<img src="https://github.com/nickpoison/astsa/blob/master/fun_with_astsa/figs/tsa4.jpg" alt="tsa4"  height="200" >  
+<img src="https://github.com/BivinSadler/Time-Series-for-Data-Science/blob/main/TS%20for%20DS.jpeg" alt="tsa4"  height="200" >  
 
 # R Code Page Number for Time Series for Data Science:  
 
