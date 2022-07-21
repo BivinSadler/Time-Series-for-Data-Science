@@ -1,4 +1,10 @@
-<center><img src="https://github.com/BivinSadler/Time-Series-for-Data-Science/blob/main/TS%20for%20DS.jpeg" height="300" >
+<img src="https://github.com/BivinSadler/Time-Series-for-Data-Science/blob/main/TS%20for%20DS.jpeg" height="300" class="center" >
+
+<div>
+
+<img width="400" src="https://github.com/BivinSadler/Time-Series-for-Data-Science/blob/main/TS%20for%20DS.jpeg" height="300" class="center">
+  
+</div>
 
 # R Code Page Number for Time Series for Data Science:  
 
