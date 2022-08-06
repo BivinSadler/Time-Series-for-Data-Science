@@ -172,7 +172,7 @@ Page 481  The following results which differ slightly from the values in the tex
 
 Page 483     The line in red should be added to the code.
 
-#Temperature
+#Temperature  
 set.seed(1) 
 fit.mlp.temp = mlp(ts(cardiacTrain[,"tempr"],frequency = 52),reps =
 50, difforder = 0, comb = "median", allow.det.season = TRUE, det.type = "bin")
