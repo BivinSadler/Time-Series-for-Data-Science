@@ -68,18 +68,18 @@ ma5= ma.pred.wge(wtc36,order= 5,n.ahead= 4)
 ```
 
 Page 103  Table 3.8 should be as shown below.
-Table 3.8: 19 Pairs of Observations in Time Series 2 that Differ by One Time Unit 
-t	x_t	x_(t+1)		t	x_t	x_(t+1)
-1	22	13		11	20	27
-2	 13	19		12	27	41
-3	19	22		13	41	44
-4	22	23		14	44	39
-5	23	21		15	39	41
-6	21	15		16	41	56
-7	15	19		17	56	57
-8	19	32		18	57	60
-9	32	20		19	60	61
-10	20	20				
+Table 3.8: 19 Pairs of Observations in Time Series 2 that Differ by One Time Unit   
+t	x_t	x_(t+1)		t	x_t	x_(t+1)  
+1	22	13		11	20	27  
+2	 13	19		12	27	41  
+3	19	22		13	41	44  
+4	22	23		14	44	39  
+5	23	21		15	39	41  
+6	21	15		16	41	56  
+7	15	19		17	56	57  
+8	19	32		18	57	60  
+9	32	20		19	60	61  
+10	20	20				  
 
 
 Page 143    The last line of the code should be 
@@ -167,15 +167,15 @@ Page 442    In the last 3 lines t[457,508] should be changed to t[457:508]
 
 Page 481  The following results which differ slightly from the values in the text and the plot is different as shown below.
    
-   Point Forecast
-38       5.202662
-39       5.104457
-40       5.527732
-41       5.263305
-42       5.560360
-43       5.701788
-44       5.748933
-45       5.931066
+   Point Forecast  
+38       5.202662  
+39       5.104457  
+40       5.527732  
+41       5.263305  
+42       5.560360  
+43       5.701788  
+44       5.748933  
+45       5.931066  
 
                                                       
 
