@@ -9,6 +9,7 @@ Errata Sheet
 Page 31    In all of the code, bitcoin should not be capitalized.
 
 Page 43  Note:  Code is modified slightly to give plots(a)-(c)
+```r
 par(mfrow=c(1,3))
 data(tesla)
 tesla.3= ma.smooth.wge(tesla,order= 3,plot= FALSE)
@@ -16,7 +17,8 @@ tesla.8= ma.smooth.wge(tesla,order= 8,plot= FALSE)
 plotts.wge(tesla)
 plotts.wge(tesla.3$smooth)
 plotts.wge(tesla.8$smooth)
-(the plots based on the tswge ts object dfw.yr are obtained analogously)
+# the plots based on the tswge ts object dfw.yr are obtained analogously
+```
 
 Page 44   Note:  This code produces all 6 plots
 par(mfrow=c(2,3))
