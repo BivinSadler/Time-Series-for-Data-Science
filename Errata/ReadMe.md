@@ -16,7 +16,7 @@ tesla.8= ma.smooth.wge(tesla,order= 8,plot= FALSE)
 plotts.wge(tesla)
 plotts.wge(tesla.3$smooth)
 plotts.wge(tesla.8$smooth)
-# the plots based on the tswge ts object dfw.yr are obtained analogously
+(the plots based on the tswge ts object dfw.yr are obtained analogously)
 
 Page 44   Note:  This code produces all 6 plots
 par(mfrow=c(2,3))
@@ -172,7 +172,7 @@ Page 481  The following results which differ slightly from the values in the tex
 
 Page 483     The line in red should be added to the code.
 
-# Temperature
+#Temperature
 set.seed(1) 
 fit.mlp.temp = mlp(ts(cardiacTrain[,"tempr"],frequency = 52),reps =
 50, difforder = 0, comb = "median", allow.det.season = TRUE, det.type = "bin")
