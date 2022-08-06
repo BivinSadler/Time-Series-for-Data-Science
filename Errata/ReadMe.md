@@ -67,7 +67,7 @@ Page 62   The last line of code uses n.ahead (which is correct) and not k.ahead
 ma5= ma.pred.wge(wtc36,order= 5,n.ahead= 4)
 ```
 
-Page 103  Table 3.8 should be as shown below.
+Page 103  Table 3.8 should be as shown below.  
 Table 3.8: 19 Pairs of Observations in Time Series 2 that Differ by One Time Unit   
 t	x_t	x_(t+1)		t	x_t	x_(t+1)  
 1	22	13		11	20	27  
