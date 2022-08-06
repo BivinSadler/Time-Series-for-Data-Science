@@ -21,6 +21,7 @@ plotts.wge(tesla.8$smooth)
 ```
 
 Page 44   Note:  This code produces all 6 plots
+```r
 par(mfrow=c(2,3))
 set.seed(6946)
 t= 1:60
@@ -35,30 +36,36 @@ plotts.wge(w)
 plotts.wge(z)
 plotts.wge(x)
 ma.smooth.wge(x,order= 5)
+```
 
 Page 48     This code replaces the incorrect code on Page 48
+```r
 data(tx.unemp.unadj)
 tx.unemp.sm= ma.smooth.wge(tx.unemp.unadj,order= 12, plot= FALSE)
 tx.unemp.sm12= ts(tx.unemp.sm$smooth,start= c(2000,1),frequency= 12)
 plotts.wge(tx.unemp.sm12)
-
+```
 
 Page 66  Note:  The third line is added to produce the plot in the text
+```r
 data(dfw.yr)
 exp.smooth.wge(dfw.yr,alpha= .2,n.ahead= 10)
 ma.pred.wge(dfw.yr,n.ahead=10)
-
-
+```
 Page 72  Problem 4:  There should be no caps in  us.retail 
 
 Page 54    This code replaces the incorrect code on page 54
+```r
 data(tx.unemp.unadj)
 tx.unemp.sm= ma.smooth.wge(tx.unemp.unadj,order= 12,plot= FALSE)
 tx.unemp.sm12= ts(tx.unemp.sm$smooth,start= c(2000,1), frequency= 12)
 plotts.wge(tx.unemp.sm12)
+```
 
 Page 62   The last line of code uses n.ahead (which is correct) and not k.ahead
+```r
 ma5= ma.pred.wge(wtc36,order= 5,n.ahead= 4)
+```
 
 Page 103  Table 3.8 should be as shown below.
 Table 3.8: 19 Pairs of Observations in Time Series 2 that Differ by One Time Unit 
@@ -75,13 +82,25 @@ t	x_t	x_(t+1)		t	x_t	x_(t+1)
 10	20	20				
 
 
-Page 143    The last line of the code should be parzen.wge(high$x.filt) instead of 
-parzenww.wge(high$x.filt) which is in the text
+Page 143    The last line of the code should be 
+```r
+parzen.wge(high$x.filt)
+```
+instead of 
+```r
+parzenww.wge(high$x.filt)
+```
+which is in the text
 
-
-Page 204     The second instance of plotts.sample.wge has the .wge left off in the text
-plotts.sample.wge(fig5.26d) # this plots Figure 5.26(d- f)
-
+Page 204     The second instance of 
+```r
+plotts.sample.wge  
+```
+has the .wge left off in the text
+```r
+plotts.sample.wge
+```
+(fig5.26d) #this plots Figure 5.26(d- f)
 
 Page 207     The second instance of plotts.sample.wge has the .wge left off in the text
 
@@ -104,20 +123,18 @@ Page 297   The last two lines should have d2.pop in place of d2
 Page 301   For the model in (7.7) and discussion following, xbar=25.56
 
 Page 314  In each of the last two lines of code there should be comma  before arlimits and the addition of ,trunc=30.  Specifically, the correct code is 
+```r
 plotts.sample.wge(xA12,arlimits=TRUE,speclimits=c(-20,10),trunc=30)
 plotts.sample.wge(sA12,arlimits=TRUE,speclimits=c(-20,10),trunc=30)
-
+```
 Page 317     The should be a comma before speclimits in each of the last 2 lines
 
 Page 335:  The results in the text do not match the results obtained by running the code.  However, conclusions are the same.
 
 Page 336     The last line should read summary(u2.out) instead of u2.out as in the text.  Also, the Box-Ljung results for the u3 output in the text do not match those obtained by running the code.
 
-
-
 Page 359      Figure 8.4(a) is incorrect.  The correct figure is shown below.
  
-
 Page 388     The file should be sunspot2.0 instead of sunspot.new 
 
 Page 389     The ljung.wge p-values for ss9$res should be 0.0678 and 0.0547
@@ -126,8 +143,6 @@ Page 390  The shapiro.test  p-values should be as follows:
 fit40 residuals: .1809
 dfw.2000 temperature residuals:  .9598
 Sunspot residuals:  7.065e-07
-
-
 
 Page 401    wbg.boot.wge should replace wbg.wge
 
@@ -144,13 +159,7 @@ Page 433    The last line of code should be changed to
 points(t[20:25],c(x2[20],f2.12),type= 'o',cex= 2,pch= 1)
 
 
-
-
-
-
 Page 436    The actual sunspot values are incorrectly plotted in Figure 10.12(b). The correct plot is shown below.
-
- 
 
 
 Page 442    In the last 3 lines t[457,508] should be changed to t[457:508] 
@@ -173,7 +182,7 @@ Page 481  The following results which differ slightly from the values in the tex
 
 
 Page 483     The line in red should be added to the code.
-
+```r
 #Temperature  
 set.seed(1) 
 fit.mlp.temp = mlp(ts(cardiacTrain[,"tempr"],frequency = 52),reps =
@@ -182,6 +191,7 @@ fit.mlp.temp
 plot(fit.mlp.temp)
 fore.mlp.temp = forecast(fit.mlp.temp, h = 52)
 plot(fore.mlp.temp)
+```
 
 
 
@@ -189,10 +199,9 @@ plot(fore.mlp.temp)
 Page 487  RMSE=6.203129  
 
 
-Page 488   Notes:  I can’t calculate RMSEENSEMBLE
-
+Page 488   Difficulty caclulating RMSEENSEMBLE ... Fix in Progress
+```r
 ensemble = (preds2S$fcst$cmort[,1] + fore.mlp.cmortS$mean)/ 2
-
 #Plot
 plot(seq(1,508,1), cardiac[,"cmort"], type = "l",xlim = c(450,508), xlab =
 "Time", ylab = "Cardiac Mortality", main = "52 Week Cardiac Mortality Forecast
@@ -200,7 +209,7 @@ From A VAR/ MLP Ensemble")
 lines(seq(457,508,1), ensemble, type = "l", lwd = 4, col = "green")
 RMSEENSEMBLE = sqrt(mean((cardiacTest[,"cmort"] - ensemble)^2))
 RMSEENSEMBLE
-
+```
 
 
 
