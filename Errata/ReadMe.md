@@ -46,6 +46,8 @@ tx.unemp.sm12= ts(tx.unemp.sm$smooth,start= c(2000,1),frequency= 12)
 plotts.wge(tx.unemp.sm12)
 ```
 
+Page 65: exp.smooth.wge() is now expsmooth.wge() throughout.  The name had to change due to an R issue with inheriting from S3 exp function.
+
 Page 66  Note:  The third line is added to produce the plot in the text and exp.smooth.wge changed to expsmooth.wge (inheritance issue)
 ```r
 data(dfw.yr)
@@ -113,6 +115,8 @@ Page 269    The parameter specifying the ϕ_j  coefficients is phi,  not phis as
 plotts.sample.wge(A_real) # plots(d- f)
 
 Page 282  In plotts.sample.wge on the last line there should be a comma after d1
+
+Page 290  (2)(i) mentions realization lengths of 100,200,500,4000 when it should be 100,200,500,10000.  
 
 Page 292-294   The correct fitted ARIMA(2,1,0) model is (1-1.37B+.73B^2)(1-B)X_t=a_t,    where σ ̂_a^2=1.036.
 
