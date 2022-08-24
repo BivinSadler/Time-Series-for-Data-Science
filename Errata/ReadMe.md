@@ -46,10 +46,10 @@ tx.unemp.sm12= ts(tx.unemp.sm$smooth,start= c(2000,1),frequency= 12)
 plotts.wge(tx.unemp.sm12)
 ```
 
-Page 66  Note:  The third line is added to produce the plot in the text
+Page 66  Note:  The third line is added to produce the plot in the text and exp.smooth.wge changed to expsmooth.wge (inheritance issue)
 ```r
 data(dfw.yr)
-exp.smooth.wge(dfw.yr,alpha= .2,n.ahead= 10)
+expsmooth.wge(dfw.yr,alpha= .2,n.ahead= 10)
 ma.pred.wge(dfw.yr,n.ahead=10)
 ```
 Page 72  Problem 4:  There should be no caps in  us.retail 
