@@ -131,7 +131,17 @@ Page 314  In each of the last two lines of code there should be comma  before ar
 plotts.sample.wge(xA12,arlimits=TRUE,speclimits=c(-20,10),trunc=30)
 plotts.sample.wge(sA12,arlimits=TRUE,speclimits=c(-20,10),trunc=30)
 ```
-Page 317     The should be a comma before speclimits in each of the last 2 lines
+Page 317  The should be a comma before speclimits in each of the last 2 lines
+
+Page 325  In the below segment of code, "type" in the est.ar.wge function is now "method"
+```r
+data(AirPassengers)
+logAP=log(AirPassengers)
+s12=artrans.wge(logAP,phi.tr=c(rep(0,11),1),plot=FALSE)
+s12d1=artrans.wge(s12,phi.tr=1,plot=FALSE)
+estAIRLINE = est.ar.wge(s12d1,p=13,method='burg')
+roll.win.rmse.wge(logAP, s = 12, d = 1, phi = estAIRLINE$phi, horizon = 12)
+```
 
 Page 335:  The results in the text do not match the results obtained by running the code.  However, conclusions are the same.
 
