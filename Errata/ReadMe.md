@@ -161,7 +161,9 @@ Sunspot residuals:  7.065e-07
 Page 401    wbg.boot.wge should replace wbg.wge
 
 Page 423  There should only be one closing parenthesis (instead of 2) toward the end of line 6 
-mlrfit= lm(sales~ad_tv1+ ad_online1+ discount,data=Bsales)#least sqr regression
+```r
+mlrfit= lm(sales~ad_tv1 + ad_online1+ discount,data=Bsales)#least sqr regression
+```
 
 Page 429  Forecast equation at the bottom of the page:  the ϕ_j should be ϕ ̂_j in all cases
 
@@ -170,8 +172,9 @@ Page 430  In the two forecast equations toward the top of the page:   ϕ_ij shou
 Page 432    Results don’t match output in book
 
 Page 433    The last line of code should be changed to
+```r
 points(t[20:25],c(x2[20],f2.12),type= 'o',cex= 2,pch= 1)
-
+```
 
 Page 436    The actual sunspot values are incorrectly plotted in Figure 10.12(b). The correct plot is shown below.
 
@@ -179,12 +182,16 @@ Page 436    The actual sunspot values are incorrectly plotted in Figure 10.12(b)
 Page 442    In the last 3 lines t[457,508] should be changed to t[457:508] 
 
 Page 459    Code should be on separate lines  
+```r
 set.seed(1)   
 AR1Fit = mlp(wtcrude2020, m = 1, hd = 0, lags = 1, difforder = 0, reps = 5)  
+```
 
 Page 460    "type" should be "method" and code should be on two separate lines  
+```r
 estAR1 = est.ar.wge(wtcrude2020,p = 1, method = "burg")  
 estAR1$phi  
+```
 
 Page 481  The following results which differ slightly from the values in the text and the plot is different as shown below.
    
