@@ -178,6 +178,13 @@ Page 436    The actual sunspot values are incorrectly plotted in Figure 10.12(b)
 
 Page 442    In the last 3 lines t[457,508] should be changed to t[457:508] 
 
+Page 459    Code should be on separate lines  
+set.seed(1)   
+AR1Fit = mlp(wtcrude2020, m = 1, hd = 0, lags = 1, difforder = 0, reps = 5)  
+
+Page 460    "type" should be "method" and code should be on two separate lines  
+estAR1 = est.ar.wge(wtcrude2020,p = 1, method = "burg")  
+estAR1$phi  
 
 Page 481  The following results which differ slightly from the values in the text and the plot is different as shown below.
    
@@ -224,6 +231,8 @@ lines(seq(457,508,1), ensemble, type = "l", lwd = 4, col = "green")
 RMSEENSEMBLE = sqrt(mean((cardiacTest[,"cmort"] - ensemble)^2))
 RMSEENSEMBLE
 ```
+
+Page 489 The VAR forecasts are a solid line and should be dashed / dotted  
 
 
 
