@@ -8,8 +8,7 @@ Errata Sheet
 
 Page 9   Figure 1.8 (c) and (f) are incorrect.  The corrected Figure 1.8 and caption are given below.
 
-<img src="https://github.com/BivinSadler/Time-Series-for-Data-Science/blob/errata/Figure1_8.jpeg" height="300" class="center" >
-
+<img src="https://github.com/BivinSadler/Time-Series-for-Data-Science/blob/main/Errata/Figure1_8.jpg" height="300" class="center" >
 
 Page 31    In all of the code, bitcoin should not be capitalized.
 
