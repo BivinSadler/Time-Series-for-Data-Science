@@ -6,6 +6,9 @@
 
 Errata Sheet
 
+Page 9   Figure 1.8 (c) and (f) are incorrect.  The corrected Figure 1.8 and caption are given below.
+
+
 Page 31    In all of the code, bitcoin should not be capitalized.
 
 Page 43  Note:  Code is modified slightly to give plots(a)-(c)
