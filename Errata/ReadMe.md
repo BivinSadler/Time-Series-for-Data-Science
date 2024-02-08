@@ -52,12 +52,22 @@ plotts.wge(tx.unemp.sm12)
 
 Page 65: exp.smooth.wge() is now expsmooth.wge() throughout.  The name had to change due to an R issue with inheriting from S3 exp function.
 
+Page 66: Subscript of FIRGURE 2.18
+Alfa = 2 should be Alfa = .2
+
 Page 66  Note:  The third line is added to produce the plot in the text and exp.smooth.wge changed to expsmooth.wge (inheritance issue)
 ```r
 data(dfw.yr)
 expsmooth.wge(dfw.yr,alpha= .2,n.ahead= 10)
 ma.pred.wge(dfw.yr,n.ahead=10)
 ```
+
+Page 66: equation s_t of additive Holt-Winters should be adjusted as follows
+Replace u_(t-1) by u_t
+
+Page 68: equation s_t of multiplicative Holt-Winters should be adjusted as follows
+Replace u_(t-1) by u_t
+
 Page 72  Problem 4:  There should be no caps in  us.retail 
 
 Page 54    This code replaces the incorrect code on page 54
