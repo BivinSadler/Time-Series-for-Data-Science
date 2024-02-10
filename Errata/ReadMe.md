@@ -231,7 +231,7 @@ plot(fore.mlp.temp)
 Page 487  RMSE=6.203129  
 
 
-Page 488   Difficulty caclulating RMSEENSEMBLE ... Fix in Progress
+Page 488   Difficulty caclulating RMSEENSEMBLE ... just need as.numeric around *ensemble*
 ```r
 ensemble = (preds2S$fcst$cmort[,1] + fore.mlp.cmortS$mean)/ 2
 #Plot
@@ -239,7 +239,7 @@ plot(seq(1,508,1), cardiac[,"cmort"], type = "l",xlim = c(450,508), xlab =
 "Time", ylab = "Cardiac Mortality", main = "52 Week Cardiac Mortality Forecast
 From A VAR/ MLP Ensemble")
 lines(seq(457,508,1), ensemble, type = "l", lwd = 4, col = "green")
-RMSEENSEMBLE = sqrt(mean((cardiacTest[,"cmort"] - ensemble)^2))
+RMSEENSEMBLE = sqrt(mean((cardiacTest[,"cmort"] - as.numeric(ensemble))^2))
 RMSEENSEMBLE
 ```
 
