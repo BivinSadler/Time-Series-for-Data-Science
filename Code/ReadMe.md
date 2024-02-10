@@ -2248,8 +2248,7 @@ cardiacTest = window(cardiac, start = c(1978,41), end = c(1979,40))
 
 # Temperature
 set.seed(1) 
-fit.mlp.temp = mlp(ts(cardiacTrain[,"tempr"],frequency = 52),reps =
-50, difforder = 0, comb = "median", allow.det.season = TRUE, det.type = "bin")
+fit.mlp.temp = mlp(ts(cardiacTrain[,"tempr"],frequency = 52),reps = 50, difforder = 0, comb = "median", allow.det.season = TRUE, det.type = "bin")
 fit.mlp.temp
 plot(fit.mlp.temp)
 fore.mlp.temp = forecast(fit.mlp.temp, h = 52)
@@ -2261,8 +2260,7 @@ plot(fore.mlp.temp)
 ```r
 # Particulates
 set.seed(1) 
-fit.mlp.part = mlp(ts(cardiacTrain[,"part"],frequency = 52),reps = 50,
-difforder = 0, comb = "median", allow.det.season = TRUE, det.type = "bin")
+fit.mlp.part = mlp(ts(cardiacTrain[,"part"],frequency = 52),reps = 50, difforder = 0, comb = "median", allow.det.season = TRUE, det.type = "bin")
 fit.mlp.part
 plot(fit.mlp.part)
 fore.mlp.part = forecast(fit.mlp.part, h = 52)
@@ -2277,8 +2275,7 @@ cardiacDF_xreg = data.frame(temp = ts(cardiacTrain[,"tempr"]),
 part = ts(c(cardiacTrain[,"part"])))
 
 set.seed(1) 
-fit.mlp.cmort = mlp(ts(cardiacTrain[,"cmort"], frequency = 52),reps = 50,
-comb = "median",xreg = cardiacDF_xreg, allow.det.season = FALSE)
+fit.mlp.cmort = mlp(ts(cardiacTrain[,"cmort"], frequency = 52),reps = 50,comb = "median",xreg = cardiacDF_xreg, allow.det.season = FALSE)
 fit.mlp.cmort
 
 plot(fit.mlp.cmort)
@@ -2297,8 +2294,7 @@ RMSE
 ```r
 cardiacDF_xreg = data.frame(temp = ts(cardiacTrain[,"tempr"]), part =
 ts(c(cardiacTrain[,"part"])))
-fit.mlp.cmortS = mlp(ts(cardiacTrain[,"cmort"],frequency = 52),reps = 50,comb
-= "median",xreg = cardiacDF_xreg, allow.det.season = TRUE, det.type = "bin")
+fit.mlp.cmortS = mlp(ts(cardiacTrain[,"cmort"],frequency = 52),reps = 50,comb = "median",xreg = cardiacDF_xreg, allow.det.season = TRUE, det.type = "bin")
 fit.mlp.cmortS
 plot(fit.mlp.cmortS)
 
