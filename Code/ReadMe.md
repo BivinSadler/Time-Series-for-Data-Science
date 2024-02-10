@@ -2294,6 +2294,7 @@ RMSE
 ```r
 cardiacDF_xreg = data.frame(temp = ts(cardiacTrain[,"tempr"]), part =
 ts(c(cardiacTrain[,"part"])))
+set.seed(1) 
 fit.mlp.cmortS = mlp(ts(cardiacTrain[,"cmort"],frequency = 52),reps = 50,comb = "median",xreg = cardiacDF_xreg, allow.det.season = TRUE, det.type = "bin")
 fit.mlp.cmortS
 plot(fit.mlp.cmortS)
@@ -2323,6 +2324,6 @@ plot(seq(1,508,1), cardiac[,"cmort"], type = "l",xlim = c(450,508), xlab =
 "Time", ylab = "Cardiac Mortality", main = "52 Week Cardiac Mortality Forecast
 From A VAR/ MLP Ensemble")
 lines(seq(457,508,1), ensemble, type = "l", lwd = 4, col = "green")
-RMSEENSEMBLE = sqrt(mean((cardiacTest[,"cmort"] - ensemble)^2))
+RMSEENSEMBLE = sqrt(mean((cardiacTest[,"cmort"] - as.numeric(ensemble))^2))
 RMSEENSEMBLE
 ```
