@@ -2298,9 +2298,7 @@ fit.mlp.cmortS = mlp(ts(cardiacTrain[,"cmort"],frequency = 52),reps = 50,comb = 
 fit.mlp.cmortS
 plot(fit.mlp.cmortS)
 
-CMDF_fore = data.frame(temp =
-ts(c(cardiacTrain[,"tempr"],fore.mlp.temp$mean)), part =
-ts(c(cardiacTrain[,"part"],fore.mlp.part$mean)))
+CMDF_fore = data.frame(temp = ts(c(cardiacTrain[,"tempr"],fore.mlp.temp$mean)), part = ts(c(cardiacTrain[,"part"],fore.mlp.part$mean)))
 ```
 
 
