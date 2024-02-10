@@ -87,6 +87,8 @@ t	x_t	x_(t+1)		t	x_t	x_(t+1)
 9	32	20		19	60	61  
 10	20	20				  
 
+Page 103, line 6:
+X_(t+1) should be X_(t+51)
 
 Page 143    The last line of the code should be 
 ```r
