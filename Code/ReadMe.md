@@ -2302,7 +2302,7 @@ CMDF_fore = data.frame(temp = ts(c(cardiacTrain[,"tempr"],fore.mlp.temp$mean)), 
 ```
 
 
-### Page 487  Note:  RMSE value differs siightly from text
+### Page 487  Note:  RMSE value differs slightly from text
 ```r
 fore.mlp.cmortS = forecast(fit.mlp.cmortS, h = 52, xreg = CMDF_fore)
 plot(fore.mlp.cmortS)
