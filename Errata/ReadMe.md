@@ -242,8 +242,11 @@ lines(seq(457,508,1), ensemble, type = "l", lwd = 4, col = "green")
 RMSEENSEMBLE = sqrt(mean((cardiacTest[,"cmort"] - as.numeric(ensemble))^2))
 RMSEENSEMBLE
 ```
+Page 488
 
-Page 489 The VAR forecasts are a solid line and should be dashed / dotted  
+The RMSEENSEMBLE should be 5.611912
+
+Page 489 The VAR forecasts are a solid line and should be dashed / dotted
 
 
 
